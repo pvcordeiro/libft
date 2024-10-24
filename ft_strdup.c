@@ -6,9 +6,11 @@
 /*   By: paude-so <paude-so@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 15:36:32 by paude-so          #+#    #+#             */
-/*   Updated: 2024/10/24 15:49:46 by paude-so         ###   ########.fr       */
+/*   Updated: 2024/10/24 16:29:42 by paude-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 char	*ft_strdup(const char *s)
 {

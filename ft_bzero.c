@@ -6,9 +6,11 @@
 /*   By: paude-so <paude-so@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 10:49:09 by paude-so          #+#    #+#             */
-/*   Updated: 2024/10/24 12:50:12 by paude-so         ###   ########.fr       */
+/*   Updated: 2024/10/24 16:29:01 by paude-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 void	ft_bzero(void *s, size_t n)
 {

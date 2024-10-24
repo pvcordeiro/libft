@@ -6,9 +6,11 @@
 /*   By: paude-so <paude-so@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 14:34:06 by paude-so          #+#    #+#             */
-/*   Updated: 2024/10/24 14:58:02 by paude-so         ###   ########.fr       */
+/*   Updated: 2024/10/24 16:29:58 by paude-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {

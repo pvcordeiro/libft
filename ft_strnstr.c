@@ -6,9 +6,11 @@
 /*   By: paude-so <paude-so@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 15:24:51 by paude-so          #+#    #+#             */
-/*   Updated: 2024/10/24 15:34:18 by paude-so         ###   ########.fr       */
+/*   Updated: 2024/10/24 16:30:02 by paude-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 char	*ft_strnstr(const char *big, const char *little, size_t len)
 {

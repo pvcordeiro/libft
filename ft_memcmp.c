@@ -6,9 +6,11 @@
 /*   By: paude-so <paude-so@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 15:12:55 by paude-so          #+#    #+#             */
-/*   Updated: 2024/10/24 15:23:32 by paude-so         ###   ########.fr       */
+/*   Updated: 2024/10/24 16:29:22 by paude-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
