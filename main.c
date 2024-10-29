@@ -6,7 +6,7 @@
 /*   By: paude-so <paude-so@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 16:03:21 by paude-so          #+#    #+#             */
-/*   Updated: 2024/10/29 15:43:32 by paude-so         ###   ########.fr       */
+/*   Updated: 2024/10/29 19:11:56 by paude-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,8 +84,8 @@ void	test_strlcpy(void)
 
 void	test_strlcat(void)
 {
-	char	ft_dest[20] = "Hello, ";
-	char	dest[20] = "Hello, ";
+	char	ft_dest[] = "Hello, ";
+	char	dest[] = "Hello, ";
 	char	src[] = "World!";
 	size_t	ft;
 	size_t	orig;
@@ -108,11 +108,11 @@ void	test_bzero(void)
 
 void	test_memset(void)
 {
-	char	ft_str[10] = "abcdefghi";
-	char	str[10] = "abcdefghi";
+	char	ft_str[] = "abcdefghi";
+	char	str[] = "abcdefghi";
 
-	ft_memset(ft_str, 'X', 4);
-	memset(str, 'X', 4);
+	ft_memset(ft_str, 48, 4);
+	memset(str, 48, 4);
 	printf("ft_memset: %s | memset: %s\n", ft_str, str);
 }
 
@@ -129,37 +129,31 @@ void	test_memcpy(void)
 
 void	test_memmove(void)
 {
-	char	ft_str[20] = "abcdefghijkl";
-	char	str[20] = "abcdefghijkl";
+	char	ft_str[] = "Bye World";
+	char	str[] = "Bye World";
 
-	ft_memmove(ft_str + 2, ft_str, 8);
-	memmove(str + 2, str, 8);
+	ft_memmove(ft_str + 2, ft_str, 5);
+	memmove(str + 2, str, 5);
 	printf("ft_memmove: %s | memmove: %s\n", ft_str, str);
 }
 
 void	test_memchr(void)
 {
 	char	str[] = "abcdefghijkl";
-	char	*ft_result;
-	char	*result;
-
-	ft_result = ft_memchr(str, 'd', 9);
-	result = memchr(str, 'd', 9);
-	printf("ft_memchr: %s | memchr: %s\n", ft_result, result);
+	size_t	n = 9;
+	printf("ft_memchr: %s | memchr: %s\n", (char *)ft_memchr(str, 'd', n), (char *)memchr(str, 'd', n));
 }
 
 void	test_calloc(void)
 {
-	int		*ft_arr;
-	int		*arr;
-	int		i;
+	size_t		n = 5;
+	size_t		*ft_arr = (size_t *)ft_calloc(n, sizeof(size_t));
+	size_t		*arr = (size_t *)calloc(n, sizeof(size_t));
+	size_t		i = 0;
 
-	ft_arr = (int *)ft_calloc(5, sizeof(int));
-	arr = (int *)calloc(5, sizeof(int));
-	i = 0;
-	while (i < 5)
+	while (i < n)
 	{
-		printf("ft_calloc arr[%d]: %d | calloc arr[%d]: %d\n", i, ft_arr[i], i, arr[i]);
+		printf("ft_calloc arr[%zu]: %zu | calloc arr[%zu]: %zu\n", i, ft_arr[i], i, arr[i]);
 		i++;
 	}
 	free(ft_arr);
@@ -170,28 +164,22 @@ void	test_strnstr(void)
 {
 	char	*big = "Hello there!";
 	char	*little = "there";
-	char	*ft_result = ft_strnstr(big, little, strlen(big));
-	char	*result = strnstr(big, little, strlen(big));
 
-	printf("ft_strnstr: %s | strnstr: %s\n", ft_result, result);
+	printf("ft_strnstr: %s | strnstr: %s\n", ft_strnstr(big, little, strlen(big)), strnstr(big, little, strlen(big)));
 }
 
 void	test_strrchr(void)
 {
 	char	str[] = "Hello, World!";
-	char	*ft_result = ft_strrchr(str, 'o');
-	char	*result = strrchr(str, 'o');
 
-	printf("ft_strrchr: %s | strrchr: %s\n", ft_result, result);
+	printf("ft_strrchr: %s | strrchr: %s\n", ft_strrchr(str, 'o'), strrchr(str, 'o'));
 }
 
 void	test_strchr(void)
 {
 	char	str[] = "Hello, World!";
-	char	*ft_result = ft_strchr(str, 'W');
-	char	*result = strchr(str, 'W');
 
-	printf("ft_strchr: %s | strchr: %s\n", ft_result, result);
+	printf("ft_strchr: %s | strchr: %s\n", ft_strchr(str, 'W'), strchr(str, 'W'));
 }
 
 void	test_strdup(void)
@@ -209,36 +197,30 @@ void	test_strncmp(void)
 {
 	char	*s1 = "Hello";
 	char	*s2 = "Hellt";
-	int		ft_cmp = ft_strncmp(s1, s2, 4);
-	int		cmp = strncmp(s1, s2, 4);
 
-	printf("ft_strncmp: %d | strncmp: %d\n", ft_cmp, cmp);
+	printf("ft_strncmp: %d | strncmp: %d\n", ft_strncmp(s1, s2, 4), strncmp(s1, s2, 4));
 }
 
 void	test_memcmp(void)
 {
 	char	str1[] = "abcdef";
 	char	str2[] = "abcdep";
-	int		ft_cmp = ft_memcmp(str1, str2, 6);
-	int		cmp = memcmp(str1, str2, 6);
 
-	printf("ft_memcmp: %d | memcmp: %d\n", ft_cmp, cmp);
+	printf("ft_memcmp: %d | memcmp: %d\n", ft_memcmp(str1, str2, 6), memcmp(str1, str2, 6));
 }
 
 void	test_atoi(void)
 {
 	char	*str = "   -42";
-	int		ft_result = ft_atoi(str);
-	int		result = atoi(str);
 
-	printf("ft_atoi: %d | atoi: %d\n", ft_result, result);
+	printf("ft_atoi: %d | atoi: %d\n", ft_atoi(str), atoi(str));
 }
 
 void	test_substr(void)
 {
 	char const	*str = "teste123";
 	
-	printf("ft_substr: %s | expected: 123\n", ft_substr(str, 5, sizeof(str)));
+	printf("ft_substr:\nInput: %s | ft_substr: %s | expected: 123\n", str, ft_substr(str, 5, sizeof(str)));
 }
 
 void	test_strjoin(void)
@@ -246,7 +228,33 @@ void	test_strjoin(void)
 	char const	*s1 = "abc";
 	char const	*s2 = "def";
 
-	printf("ft_strjoin: %s | expected: abcdef\n", ft_strjoin(s1, s2));
+	printf("ft_strjoin:\nString 1: %s | String 2: %s | ft_strjoin: %s | expected: abcdef\n", s1, s2, ft_strjoin(s1, s2));
+}
+
+// void	test_strtrim(void)
+// {
+// 	char const *str = "aaaaaaMy name is Giovanni Giorgioiiiiiii";
+// 	char const *set = "ai";
+
+// 	printf("String: %s | Trimmer: %s | ft_strtrim: %s | expected: My name is Giovanni Giorgio\n", str, set, ft_strtrim(str, set));
+// }
+
+void	test_ft_putchar_fd(void)
+{
+	char	c = 'A';
+	printf("ft_putchar_fd: ");
+	fflush(stdout);
+	ft_putchar_fd(c, 1);
+	printf(" | expected: A\n");
+}
+
+void	test_ft_putstr_fd(void)
+{
+	char	*str = "But everybody call me Giorgio";
+	printf("ft_putstr_fd: ");
+	fflush(stdout);
+	ft_putstr_fd(str, 1);
+	printf(" | expected: But everybody call me Giorgio\n");
 }
 
 int	main(void)
@@ -296,10 +304,16 @@ int	main(void)
 	test_memcmp();
 	printf("\n");
 	test_atoi();
-	printf("\n\nThere's no C functions of these functions below, so no comparison\n\n\n");
+	printf("\n\nThere's no C native functions of these functions below, so no comparison\n\n\n");
 	test_substr();
 	printf("\n");
 	test_strjoin();
+	printf("\n");
+	// test_strtrim();
+	test_ft_putchar_fd();
+	printf("\n");
+	test_ft_putstr_fd();
+	printf("\n");
 	
 	return (0);
 }

@@ -1,26 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: paude-so <paude-so@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/24 14:34:06 by paude-so          #+#    #+#             */
-/*   Updated: 2024/10/29 18:54:13 by paude-so         ###   ########.fr       */
+/*   Created: 2024/10/29 18:35:18 by paude-so          #+#    #+#             */
+/*   Updated: 2024/10/29 18:52:49 by paude-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strncmp(const char *s1, const char *s2, size_t n)
+void ft_putchar_fd(char c, int fd)
 {
-	while (n > 0 && *s1 && *s2 && *s1 == *s2)
-	{
-		s1++;
-		s2++;
-		n--;
-	}
-	if (n == 0)
-		return (0);
-	return (*s1 - *s2);
+	write (fd, &c, 1);
 }
