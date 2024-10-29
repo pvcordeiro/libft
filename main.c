@@ -6,11 +6,15 @@
 /*   By: paude-so <paude-so@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 16:03:21 by paude-so          #+#    #+#             */
-/*   Updated: 2024/10/29 19:11:56 by paude-so         ###   ########.fr       */
+/*   Updated: 2024/10/29 21:20:11 by paude-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
+# include <stddef.h>
+# include <ctype.h>
+# include <bsd/string.h>
 
 void	test_isalnum(void)
 {
@@ -245,7 +249,7 @@ void	test_ft_putchar_fd(void)
 	printf("ft_putchar_fd: ");
 	fflush(stdout);
 	ft_putchar_fd(c, 1);
-	printf(" | expected: A\n");
+	printf(" | expected: %c\n", c);
 }
 
 void	test_ft_putstr_fd(void)
@@ -254,20 +258,39 @@ void	test_ft_putstr_fd(void)
 	printf("ft_putstr_fd: ");
 	fflush(stdout);
 	ft_putstr_fd(str, 1);
-	printf(" | expected: But everybody call me Giorgio\n");
+	printf(" | expected: %s\n", str);
+}
+void	test_ft_putendl_fd(void)
+{
+	char	*str = "But everybody call me Giorgio";
+	printf("ft_putendl_fd: ");
+	fflush(stdout);
+	ft_putendl_fd(str, 1);
+	printf(" | expected: %s\n", str);
+}
+
+void	test_ft_putnbr_fd(void)
+{
+	int	n = -85730;
+	printf("ft_puntbr_fd: ");
+	fflush(stdout);
+	ft_putnbr_fd(n, 1);
+	printf(" | expected: %d", n);
 }
 
 int	main(void)
 {
+	printf("The output of the first four functions are not the same because the standard library returns a non-zero value or 0, so even though the outputs are not the same, they behave the same way by returning basically true(non-zero) or false(0)\n");
+	printf("\n");
 	test_isalnum();
 	printf("\n");
 	test_isalpha();
 	printf("\n");
 	test_isdigit();
 	printf("\n");
-	test_isascii();
-	printf("\n");
 	test_isprint();
+	printf("\n");
+	test_isascii();
 	printf("\n");
 	test_tolower();
 	printf("\n");
@@ -304,7 +327,7 @@ int	main(void)
 	test_memcmp();
 	printf("\n");
 	test_atoi();
-	printf("\n\nThere's no C native functions of these functions below, so no comparison\n\n\n");
+	printf("\n\nThere's no C native functions of the functions below, so the output is expected according to the project description\n\n\n");
 	test_substr();
 	printf("\n");
 	test_strjoin();
@@ -313,6 +336,10 @@ int	main(void)
 	test_ft_putchar_fd();
 	printf("\n");
 	test_ft_putstr_fd();
+	printf("\n");
+	test_ft_putendl_fd();
+	printf("\n");
+	test_ft_putnbr_fd();
 	printf("\n");
 	
 	return (0);

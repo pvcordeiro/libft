@@ -1,27 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: paude-so <paude-so@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/24 10:49:09 by paude-so          #+#    #+#             */
-/*   Updated: 2024/10/29 21:15:42 by paude-so         ###   ########.fr       */
+/*   Created: 2024/10/29 20:36:11 by paude-so          #+#    #+#             */
+/*   Updated: 2024/10/29 20:49:13 by paude-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_bzero(void *s, size_t n)
+void	ft_putnbr_fd(int n, int fd)
 {
-	char	*cast;
-	size_t	i;
-
-	i = 0;
-	cast = (char *)s;
-	while (i < n)
+	char	digit;
+	long	i;
+	
+	i = n;
+	if (i < 0)
 	{
-		cast[i] = '\0';
-		i++;
+		i = -i;
+		write(fd, "-", 1);
 	}
+	if (i >= 10)
+		ft_putnbr_fd((i / 10), fd);
+	digit = i % 10 + 48;
+	write(fd, &digit, 1);
 }
