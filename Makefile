@@ -1,33 +1,36 @@
 # Variables
 CC = cc -Wall -Wextra -Werror
-SRCS = ft_atoi.c ft_bzero.c ft_calloc.c ft_isalnum.c ft_isalpha.c ft_isascii.c ft_isdigit.c ft_isprint.c ft_memchr.c ft_memcmp.c ft_memcpy.c ft_memmove.c ft_memset.c ft_strchr.c ft_strdup.c ft_strlcat.c ft_strlcpy.c ft_strlen.c ft_strncmp.c ft_strnstr.c ft_strrchr.c ft_tolower.c ft_toupper.c
+SRCS = ft_atoi.c ft_bzero.c ft_calloc.c ft_isalnum.c ft_isalpha.c ft_isascii.c ft_isdigit.c ft_isprint.c ft_memchr.c ft_memcmp.c ft_memcpy.c ft_memmove.c ft_memset.c ft_strchr.c ft_strdup.c ft_strlcat.c ft_strlcpy.c ft_strlen.c ft_strncmp.c ft_strnstr.c ft_strrchr.c ft_tolower.c ft_toupper.c ft_substr.c ft_strjoin.c
 OBJS = $(SRCS:.c=.o)
 NAME = libft.a
-INC_DIR = ./
 
 # Targets
-all: $(NAME) main
+all: $(NAME)
 
 $(NAME): $(OBJS)
-	echo "Creating library $(NAME)"
-	ar rcs $(NAME) $(OBJS)
+	@echo "Creating library $(NAME)\n"
+	@ar rcs $(NAME) $(OBJS)
 
-main: main.o $(NAME)
-	echo "Linking main"
-	$(CC) -o main main.o -L. -lft
-
+# remove this before sending
+test: $(NAME)
+	@echo "Compiling main into .o and linking it\n"
+	@$(CC) -I. -c main.c -o main.o
+	@$(CC) -o test main.o -L. -lft -lbsd
+	@echo "\n\n            Tests bellow\n\n\n"
+	@./test
+# ^^^^^^^^^
 clean:
-	echo "Cleaning object files"
-	rm -f $(OBJS) main.o
+	@echo "Cleaning object files\n"
+	@rm -f $(OBJS)
 
 fclean: clean
-	echo "Removing library $(NAME)"
-	rm -f $(NAME)
-	rm -f main
+	@echo "Removing library $(NAME) and object files\n"
+	@rm -f $(NAME) main.o test
+#        remove this ^     ^
 
-re: fclean all
-
+re: fclean all test
+#remove this    ^
 # Compile object files
 %.o: %.c
-	echo "Compiling $< into $@"
-	$(CC) -I$(INC_DIR) -c $< -o $@
+	@echo "Compiling $< into $@"
+	@$(CC) -I. -c $< -o $@

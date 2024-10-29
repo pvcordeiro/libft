@@ -1,36 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: paude-so <paude-so@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/25 11:30:34 by paude-so          #+#    #+#             */
-/*   Updated: 2024/10/29 14:46:25 by paude-so         ###   ########.fr       */
+/*   Created: 2024/10/29 14:55:18 by paude-so          #+#    #+#             */
+/*   Updated: 2024/10/29 15:13:03 by paude-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	char		*sub;
-	size_t		i;
+	char	*cat;
+	char	*result;
+	size_t	full_size;
 
-	if (!s)
+	full_size = ft_strlen(s1) + ft_strlen(s2);	
+	cat = malloc(full_size + 1);
+	if (!cat)
 		return (NULL);
-	if (start > ft_strlen(s))
-		return (ft_strdup(""));
-	if (len > ft_strlen(s + start))
-		len = ft_strlen(s + start);
-	sub = malloc(ft_strlen(&s[start]));
-	if (!sub)
-		return (NULL);
-	i = 0;
-	while (i < len)
+	result = cat;
+	while (*s1)
 	{
-		sub[i] = s[start + i];
-		i++;
+		*cat = *s1;
+		cat++;
+		s1++;
 	}
-	return (sub);
+	while (*s2)
+	{
+		*cat = *s2;
+		cat++;
+		s2++;
+	}
+	*cat = '\0';
+	return (result);
 }
