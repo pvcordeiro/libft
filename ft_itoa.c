@@ -6,7 +6,7 @@
 /*   By: paude-so <paude-so@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 12:00:54 by paude-so          #+#    #+#             */
-/*   Updated: 2024/10/30 13:06:34 by paude-so         ###   ########.fr       */
+/*   Updated: 2024/10/30 14:26:09 by paude-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,10 +56,7 @@ char	*ft_itoa(int n)
 	if (!str)
 		return (NULL);
 	if (n == 0)
-	{
-		str[0] = 0;
-		return (str);
-	}
+		return (ft_strdup("0"));
 	if (n < 0)
 	{
 		str[0] = '-';

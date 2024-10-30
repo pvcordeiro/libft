@@ -6,7 +6,7 @@
 /*   By: paude-so <paude-so@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 16:03:21 by paude-so          #+#    #+#             */
-/*   Updated: 2024/10/30 13:06:17 by paude-so         ###   ########.fr       */
+/*   Updated: 2024/10/30 14:24:40 by paude-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,12 +134,13 @@ void	test_memcpy(void)
 
 void	test_memmove(void)
 {
-	char	ft_str[] = "Bye World";
-	char	str[] = "Bye World";
+	char	str[] = "rem ipssum dolor sit a";
+	char	ft_dest[ft_strlen(str) + 1];
+	char	dest[ft_strlen(str) + 1];
 
-	ft_memmove(ft_str + 2, ft_str, 5);
-	memmove(str + 2, str, 5);
-	printf("ft_memmove: %s | memmove: %s\n", ft_str, str);
+	ft_memmove(str, ft_dest, 8);
+	memmove(str, dest, 8);
+	printf("ft_memmove: %s | memmove: %s\n", ft_dest, dest);
 }
 
 void	test_memchr(void)
@@ -274,7 +275,7 @@ void	test_ft_putnbr_fd(void)
 
 void	test_ft_itoa(void)
 {
-	int	nb = -4518235;
+	int	nb = 0;
 	printf("\nft_itoa: %s | expected: %d", ft_itoa(nb), nb);
 }
 
