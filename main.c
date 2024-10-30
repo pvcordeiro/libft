@@ -6,15 +6,15 @@
 /*   By: paude-so <paude-so@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 16:03:21 by paude-so          #+#    #+#             */
-/*   Updated: 2024/10/30 14:24:40 by paude-so         ###   ########.fr       */
+/*   Updated: 2024/10/30 16:22:12 by paude-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdio.h>
-# include <stddef.h>
-# include <ctype.h>
-# include <bsd/string.h>
+#include <stddef.h>
+#include <ctype.h>
+#include <bsd/string.h>
 
 void	test_isalnum(void)
 {
@@ -134,12 +134,17 @@ void	test_memcpy(void)
 
 void	test_memmove(void)
 {
-	char	str[] = "rem ipssum dolor sit a";
-	char	ft_dest[ft_strlen(str) + 1];
-	char	dest[ft_strlen(str) + 1];
+	char	ft_str[] = "rem ipssum dolor sit amet";
+	char	str[] = "rem ipssum dolor sit amet";
+	char	ft_dest[sizeof(ft_str)];
+	char	dest[sizeof(str)];
+	size_t	n = 10;
+	
+	ft_memmove(ft_dest, ft_str, n);
+	ft_dest[n] = 0;
+	memmove(dest, str, n);
+	dest[n] = 0;
 
-	ft_memmove(str, ft_dest, 8);
-	memmove(str, dest, 8);
 	printf("ft_memmove: %s | memmove: %s\n", ft_dest, dest);
 }
 
@@ -178,7 +183,7 @@ void	test_strrchr(void)
 {
 	char	str[] = "Hello, World!";
 
-	printf("ft_strrchr: %s | strrchr: %s\n", ft_strrchr(str, 'o'), strrchr(str, 'o'));
+	printf("ft_strrchr: %s | strrchr: %s\n", ft_strrchr(str, '\0'), strrchr(str, '\0'));
 }
 
 void	test_strchr(void)
@@ -279,16 +284,9 @@ void	test_ft_itoa(void)
 	printf("\nft_itoa: %s | expected: %d", ft_itoa(nb), nb);
 }
 
-// void	test_strtrim(void)
-// {
-// 	char const *str = "aaaaaaMy name is Giovanni Giorgioiiiiiii";
-// 	char const *set = "ai";
-
-// 	printf("String: %s | Trimmer: %s | ft_strtrim: %s | expected: My name is Giovanni Giorgio\n", str, set, ft_strtrim(str, set));
-// }
 int	main(void)
 {
-	printf("The output of the first four functions are not the same because the standard library returns a non-zero value or 0, so even though the outputs are not the same, they behave the same way by returning basically true(non-zero) or false(0)\n");
+	printf("\tThe output of the first four functions are not the same\n\tbecause the standard library returns a non-zero\n\tvalue or 0, so even though the outputs are not the same,\n\tthey behave the same way by returning basically\n\ttrue(non-zero) or false(0)\n");
 	printf("\n");
 	test_isalnum();
 	printf("\n");
@@ -335,7 +333,7 @@ int	main(void)
 	test_memcmp();
 	printf("\n");
 	test_atoi();
-	printf("\n\nThere's no C native functions of the functions below, so the output is expected according to the project description\n\n\n");
+	printf("\n\n\tThere's no C native functions of the functions\n\tbelow, so the output is expected\n\taccording to the project description\n\n\n");
 	test_substr();
 	printf("\n");
 	test_strjoin();
@@ -350,7 +348,6 @@ int	main(void)
 	printf("\n");
 	test_ft_itoa();
 	printf("\n");
-	// test_strtrim();
 	
 	
 	return (0);

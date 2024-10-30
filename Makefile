@@ -13,7 +13,7 @@ test: $(NAME)
 	@echo "\nCompiling main into .o and linking it\n"
 	@$(CC) -I. -c main.c -o main.o
 	@$(CC) main.o -L. -lft -lbsd -o test
-	@echo "\n\n            Tests bellow\n\n\n"
+	@echo "\n\n\t\t\tTests bellow\n\n\n"
 	@./test
 # ^^^^^^^^^
 clean:
