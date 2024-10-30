@@ -6,7 +6,7 @@
 /*   By: paude-so <paude-so@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 16:03:21 by paude-so          #+#    #+#             */
-/*   Updated: 2024/10/30 18:09:21 by paude-so         ###   ########.fr       */
+/*   Updated: 2024/10/30 19:39:31 by paude-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -275,80 +275,129 @@ void	test_ft_putnbr_fd(void)
 	printf("ft_puntbr_fd: ");
 	fflush(stdout);
 	ft_putnbr_fd(n, 1);
-	printf(" | expected: %d", n);
+	printf(" | expected: %d\n", n);
 }
 
 void	test_ft_itoa(void)
 {
-	int	nb = -2147483648;
-	printf("\nft_itoa: %s | expected: %d", ft_itoa(nb), nb);
+	int	nb1 = -2147483648;
+	printf("ft_itoa: %s | expected: %d\n", ft_itoa(nb1), nb1);
+	int	nb2 = 0;
+	printf("ft_itoa: %s | expected: %d\n", ft_itoa(nb2), nb2);
+	int	nb3 = 2147483647;
+	printf("ft_itoa: %s | expected: %d\n", ft_itoa(nb3), nb3);
+}
+
+char custom_toupper(unsigned int index, char c)
+{
+    (void)index;
+    return ft_toupper(c);
+}
+
+void	test_ft_strmapi(void)
+{
+	char	*str = "abc";
+
+	printf("ft_strmapi: %s\n", ft_strmapi(str, custom_toupper));
 }
 
 int	main(void)
 {
 	printf("\tThe output of the first four functions are not the same\n\tbecause the standard library returns a non-zero\n\tvalue or 0, so even though the outputs are not the same,\n\tthey behave the same way by returning basically\n\ttrue(non-zero) or false(0)\n");
 	printf("\n");
+	printf("\n");
 	test_isalnum();
+	printf("\n");
 	printf("\n");
 	test_isalpha();
 	printf("\n");
+	printf("\n");
 	test_isdigit();
+	printf("\n");
 	printf("\n");
 	test_isprint();
 	printf("\n");
+	printf("\n");
 	test_isascii();
+	printf("\n");
 	printf("\n");
 	test_tolower();
 	printf("\n");
+	printf("\n");
 	test_toupper();
+	printf("\n");
 	printf("\n");
 	test_strlen();
 	printf("\n");
+	printf("\n");
 	test_strlcpy();
+	printf("\n");
 	printf("\n");
 	test_strlcat();
 	printf("\n");
+	printf("\n");
 	test_bzero();
+	printf("\n");
 	printf("\n");
 	test_memset();
 	printf("\n");
+	printf("\n");
 	test_memcpy();
+	printf("\n");
 	printf("\n");
 	test_memmove();
 	printf("\n");
+	printf("\n");
 	test_memchr();
+	printf("\n");
 	printf("\n");
 	test_calloc();
 	printf("\n");
+	printf("\n");
 	test_strnstr();
+	printf("\n");
 	printf("\n");
 	test_strrchr();
 	printf("\n");
+	printf("\n");
 	test_strchr();
+	printf("\n");
 	printf("\n");
 	test_strdup();
 	printf("\n");
+	printf("\n");
 	test_strncmp();
 	printf("\n");
+	printf("\n");
 	test_memcmp();
+	printf("\n");
 	printf("\n");
 	test_atoi();
 	printf("\n\n\tThere's no C native functions of the functions\n\tbelow, so the output is expected\n\taccording to the project description\n\n\n");
 	test_substr();
 	printf("\n");
+	printf("\n");
 	test_strjoin();
+	printf("\n");
 	printf("\n");
 	test_ft_putchar_fd();
 	printf("\n");
+	printf("\n");
 	test_ft_putstr_fd();
+	printf("\n");
 	printf("\n");
 	test_ft_putendl_fd();
 	printf("\n");
+	printf("\n");
 	test_ft_putnbr_fd();
+	printf("\n");
 	printf("\n");
 	test_ft_itoa();
 	printf("\n");
-	
+	printf("\n");
+	test_ft_strmapi();
+	printf("\n");
+	printf("\n");
 	
 	return (0);
 }
