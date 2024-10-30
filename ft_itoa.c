@@ -6,7 +6,7 @@
 /*   By: paude-so <paude-so@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 12:00:54 by paude-so          #+#    #+#             */
-/*   Updated: 2024/10/30 18:41:32 by paude-so         ###   ########.fr       */
+/*   Updated: 2024/10/30 20:55:12 by paude-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,9 @@ static long	ft_int_counter(long nb)
 {
 	long	count;
 
+	count = 0;
 	if (nb <= 0)
 		count = 1;
-	else
-		count = 0;
 	while (nb != 0)
 	{
 		nb /= 10;
@@ -50,8 +49,6 @@ char	*ft_itoa(int n)
 	if (!str)
 		return (NULL);
 	str[digits] = 0;
-	if (nb == 0)
-		return (ft_strdup("0"));
 	if (nb < 0)
 	{
 		str[0] = '-';
