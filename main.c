@@ -6,7 +6,7 @@
 /*   By: paude-so <paude-so@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 16:03:21 by paude-so          #+#    #+#             */
-/*   Updated: 2024/10/30 16:22:12 by paude-so         ###   ########.fr       */
+/*   Updated: 2024/10/30 17:36:02 by paude-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -280,7 +280,7 @@ void	test_ft_putnbr_fd(void)
 
 void	test_ft_itoa(void)
 {
-	int	nb = 0;
+	int	nb = -2147483648;
 	printf("\nft_itoa: %s | expected: %d", ft_itoa(nb), nb);
 }
 

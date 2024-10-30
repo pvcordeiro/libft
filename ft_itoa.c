@@ -6,20 +6,21 @@
 /*   By: paude-so <paude-so@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 12:00:54 by paude-so          #+#    #+#             */
-/*   Updated: 2024/10/30 14:26:09 by paude-so         ###   ########.fr       */
+/*   Updated: 2024/10/30 17:36:41 by paude-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_counter(int nb)
+static int	ft_counter(long nb)
 {
-	int	count;
+	long	count;
 
-	if (nb < 0)
-		nb = -nb;
-	count = 0;
-	while (nb > 0)
+	if (nb <= 0)
+		count = 1;
+	else
+		count = 0;
+	while (nb != 0)
 	{
 		nb /= 10;
 		count++;
@@ -27,44 +28,37 @@ static int	ft_counter(int nb)
 	return (count);
 }
 
-static void	ft_negative(int digit, char *str, int n)
+static void	ft_putitoa(long digit, char *str, long n)
 {
-	n = -n;
-	while (digit--)
+	while (digit)
 	{
-		str[digit] = n % 10 + '0';
+		str[digit - 1] = n % 10 + '0';
 		n /= 10;
-	}
-}
-
-static void	ft_positive(int digit, char *str, int n)
-{
-	while (digit--)
-	{
-		str[digit] = n % 10 + '0';
-		n /= 10;
+		digit--;
 	}
 }
 
 char	*ft_itoa(int n)
 {
 	char	*str;
-	int		digits;
+	long	digits;
+	long	nb;
 
-	digits = ft_counter(n);
+	nb = n;
+	digits = ft_counter(nb);
 	str = malloc((digits + 1) * sizeof(char));
 	if (!str)
 		return (NULL);
-	if (n == 0)
+	str[digits] = 0;
+	if (nb == 0)
 		return (ft_strdup("0"));
-	if (n < 0)
+	if (nb < 0)
 	{
 		str[0] = '-';
-		ft_negative(digits, str + 1, n);
-		str[ft_strlen(str) + 1] = 0;
-		return (str);
+		nb = -nb;
+		ft_putitoa(digits - 1, str + 1, nb);
 	}
-	ft_positive(digits, str, n);
-	str[ft_strlen(str) + 1] = 0;
+	else
+		ft_putitoa(digits, str, nb);
 	return (str);
 }
