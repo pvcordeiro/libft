@@ -6,7 +6,7 @@
 /*   By: paude-so <paude-so@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 16:03:21 by paude-so          #+#    #+#             */
-/*   Updated: 2024/10/30 19:39:31 by paude-so         ###   ########.fr       */
+/*   Updated: 2024/10/30 19:59:38 by paude-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -288,9 +288,9 @@ void	test_ft_itoa(void)
 	printf("ft_itoa: %s | expected: %d\n", ft_itoa(nb3), nb3);
 }
 
-char custom_toupper(unsigned int index, char c)
+char custom_toupper(unsigned int i, char c)
 {
-    (void)index;
+    (void)i;
     return ft_toupper(c);
 }
 
@@ -299,6 +299,21 @@ void	test_ft_strmapi(void)
 	char	*str = "abc";
 
 	printf("ft_strmapi: %s\n", ft_strmapi(str, custom_toupper));
+}
+
+void custom_tolower(unsigned int i, char *c)
+{
+    (void)i;
+    c[0] = ft_tolower(c[0]);
+}
+
+void	test_ft_striteri(void)
+{
+	char	str[] = "ABC";
+	ft_striteri(str, custom_tolower);
+
+	printf("ft_striteri: %s\n", str);
+	
 }
 
 int	main(void)
@@ -396,6 +411,9 @@ int	main(void)
 	printf("\n");
 	printf("\n");
 	test_ft_strmapi();
+	printf("\n");
+	printf("\n");
+	test_ft_striteri();
 	printf("\n");
 	printf("\n");
 	

@@ -1,32 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: paude-so <paude-so@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/24 11:20:46 by paude-so          #+#    #+#             */
-/*   Updated: 2024/10/30 16:02:02 by paude-so         ###   ########.fr       */
+/*   Created: 2024/10/30 19:47:31 by paude-so          #+#    #+#             */
+/*   Updated: 2024/10/30 20:00:04 by paude-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memmove(void *dest, const void *src, size_t n)
+void	ft_striteri(char *s, void (*f)(unsigned int, char *))
 {
-	if (!dest || !src)
-		return (NULL);
-	if (n == 0)
-		return (dest);
-	if (src > dest)
-		ft_memcpy(dest, src, n);
-	else
+	unsigned int		i;
+
+	i = 0;
+	while (s[i])
 	{
-		while (n > 0)
-		{
-			n--;
-			((unsigned char *)dest)[n] = ((unsigned char *)src)[n];
-		}
+		(*f)(i, &s[i]);
+		i++;
 	}
-	return (dest);
+	s[i] = '\0';
 }
