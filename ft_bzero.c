@@ -6,7 +6,7 @@
 /*   By: paude-so <paude-so@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 10:49:09 by paude-so          #+#    #+#             */
-/*   Updated: 2024/10/29 21:15:42 by paude-so         ###   ########.fr       */
+/*   Updated: 2024/10/30 11:58:23 by paude-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,9 @@
 
 void	ft_bzero(void *s, size_t n)
 {
-	char	*cast;
-	size_t	i;
+	char	*ptr;
 
-	i = 0;
-	cast = (char *)s;
-	while (i < n)
-	{
-		cast[i] = '\0';
-		i++;
-	}
+	ptr = (char *)s;
+	while (n--)
+		*ptr++ = 0;
 }

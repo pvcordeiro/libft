@@ -6,7 +6,7 @@
 /*   By: paude-so <paude-so@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 16:03:21 by paude-so          #+#    #+#             */
-/*   Updated: 2024/10/29 21:20:11 by paude-so         ###   ########.fr       */
+/*   Updated: 2024/10/30 13:06:17 by paude-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,10 +104,11 @@ void	test_bzero(void)
 {
 	char	ft_str[] = "Hello, World!";
 	char	str[] = "Hello, World!";
+	size_t	n = 2;
 
-	ft_bzero(ft_str + 7, 6);
-	bzero(str + 7, 6);
-	printf("ft_bzero: %s | bzero: %s\n", ft_str, str);
+	ft_bzero(ft_str, n);
+	bzero(str, n);
+	printf("ft_bzero: %s | bzero: %s\n", ft_str + n, str + n);
 }
 
 void	test_memset(void)
@@ -235,13 +236,6 @@ void	test_strjoin(void)
 	printf("ft_strjoin:\nString 1: %s | String 2: %s | ft_strjoin: %s | expected: abcdef\n", s1, s2, ft_strjoin(s1, s2));
 }
 
-// void	test_strtrim(void)
-// {
-// 	char const *str = "aaaaaaMy name is Giovanni Giorgioiiiiiii";
-// 	char const *set = "ai";
-
-// 	printf("String: %s | Trimmer: %s | ft_strtrim: %s | expected: My name is Giovanni Giorgio\n", str, set, ft_strtrim(str, set));
-// }
 
 void	test_ft_putchar_fd(void)
 {
@@ -278,6 +272,19 @@ void	test_ft_putnbr_fd(void)
 	printf(" | expected: %d", n);
 }
 
+void	test_ft_itoa(void)
+{
+	int	nb = -4518235;
+	printf("\nft_itoa: %s | expected: %d", ft_itoa(nb), nb);
+}
+
+// void	test_strtrim(void)
+// {
+// 	char const *str = "aaaaaaMy name is Giovanni Giorgioiiiiiii";
+// 	char const *set = "ai";
+
+// 	printf("String: %s | Trimmer: %s | ft_strtrim: %s | expected: My name is Giovanni Giorgio\n", str, set, ft_strtrim(str, set));
+// }
 int	main(void)
 {
 	printf("The output of the first four functions are not the same because the standard library returns a non-zero value or 0, so even though the outputs are not the same, they behave the same way by returning basically true(non-zero) or false(0)\n");
@@ -332,7 +339,6 @@ int	main(void)
 	printf("\n");
 	test_strjoin();
 	printf("\n");
-	// test_strtrim();
 	test_ft_putchar_fd();
 	printf("\n");
 	test_ft_putstr_fd();
@@ -341,6 +347,10 @@ int	main(void)
 	printf("\n");
 	test_ft_putnbr_fd();
 	printf("\n");
+	test_ft_itoa();
+	printf("\n");
+	// test_strtrim();
+	
 	
 	return (0);
 }
