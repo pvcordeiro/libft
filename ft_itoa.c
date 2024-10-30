@@ -6,13 +6,13 @@
 /*   By: paude-so <paude-so@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 12:00:54 by paude-so          #+#    #+#             */
-/*   Updated: 2024/10/30 17:36:41 by paude-so         ###   ########.fr       */
+/*   Updated: 2024/10/30 18:13:20 by paude-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_counter(long nb)
+static long	ft_int_counter(long nb)
 {
 	long	count;
 
@@ -28,7 +28,7 @@ static int	ft_counter(long nb)
 	return (count);
 }
 
-static void	ft_putitoa(long digit, char *str, long n)
+static void	ft_put_itoa(long digit, char *str, long n)
 {
 	while (digit)
 	{
@@ -45,7 +45,7 @@ char	*ft_itoa(int n)
 	long	nb;
 
 	nb = n;
-	digits = ft_counter(nb);
+	digits = ft_int_counter(nb);
 	str = malloc((digits + 1) * sizeof(char));
 	if (!str)
 		return (NULL);
@@ -56,9 +56,9 @@ char	*ft_itoa(int n)
 	{
 		str[0] = '-';
 		nb = -nb;
-		ft_putitoa(digits - 1, str + 1, nb);
+		ft_put_itoa(digits - 1, str + 1, nb);
 	}
 	else
-		ft_putitoa(digits, str, nb);
+		ft_put_itoa(digits, str, nb);
 	return (str);
 }
