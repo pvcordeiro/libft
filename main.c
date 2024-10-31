@@ -6,7 +6,7 @@
 /*   By: paude-so <paude-so@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 16:03:21 by paude-so          #+#    #+#             */
-/*   Updated: 2024/10/31 14:25:59 by paude-so         ###   ########.fr       */
+/*   Updated: 2024/10/31 15:03:46 by paude-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -227,7 +227,7 @@ void	test_atoi(void)
 	printf("\t\tft_atoi\n\n");
 	char	*str = "   -42";
 
-	printf("  String: %s\n  ft_atoi: %d\n", ft_atoi(str), atoi(str));
+	printf("  Test string: %s\n  ft_atoi: %d\n  atoi: %d\n", str, ft_atoi(str), atoi(str));
 }
 
 void	test_substr(void)
@@ -411,7 +411,7 @@ int	main(void)
 	printf("\n");
 	printf("\n");
 	test_atoi();
-	printf("\n\n\tThere's no C native functions of the functions\n\t\tbelow, so the output is expected\n\t      according to the project description\n\n\n");
+	printf("\n\n   There's no C native functions of the functions\n        below, so the output is expected\n      according to the project description\n\n\n");
 	test_substr();
 	printf("\n");
 	printf("\n");

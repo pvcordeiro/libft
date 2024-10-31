@@ -6,7 +6,7 @@
 /*   By: paude-so <paude-so@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 14:55:18 by paude-so          #+#    #+#             */
-/*   Updated: 2024/10/31 13:18:51 by paude-so         ###   ########.fr       */
+/*   Updated: 2024/10/31 15:00:57 by paude-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,16 @@
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
-	char	*cat;
+	char	*str;
 	size_t	full_size;
 
 	if (!s1 || !s2)
 		return (NULL);
 	full_size = ft_strlen(s1) + ft_strlen(s2);
-	cat = (char *)malloc(full_size + 1);
-	if (!cat)
+	str = (char *)malloc(full_size + 1 * sizeof(char));
+	if (!str)
 		return (NULL);
-	ft_strlcpy(cat, s1, full_size + 1);
-	ft_strlcat(cat, s2, full_size + 1);
-	return (cat);
+	ft_strlcpy(str, s1, full_size);
+	ft_strlcat(str, s2, full_size + 1);
+	return (str);
 }
