@@ -6,9 +6,11 @@
 /*   By: paude-so <paude-so@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 21:01:02 by paude-so          #+#    #+#             */
-/*   Updated: 2024/10/31 12:17:37 by paude-so         ###   ########.fr       */
+/*   Updated: 2024/10/31 12:31:34 by paude-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 int	ft_atoi(const char *nptr)
 {

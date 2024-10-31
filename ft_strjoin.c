@@ -6,7 +6,7 @@
 /*   By: paude-so <paude-so@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 14:55:18 by paude-so          #+#    #+#             */
-/*   Updated: 2024/10/31 12:10:02 by paude-so         ###   ########.fr       */
+/*   Updated: 2024/10/31 12:32:19 by paude-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,5 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		return (NULL);
 	ft_strlcpy(cat, s1, full_size + 1);
 	ft_strlcat(cat, s2, full_size + 1);
-	return (result);
+	return (cat);
 }
