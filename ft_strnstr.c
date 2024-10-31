@@ -21,10 +21,10 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 		return ((char *)big);
 	while (*big && len >= l_len)
 	{
-			if (!ft_strncmp(big, little, l_len))
-				return ((char *)big);
-			big++;
-			len--;
+		if (!ft_strncmp(big, little, l_len))
+			return ((char *)big);
+		big++;
+		len--;
 	}
 	return (NULL);
 }

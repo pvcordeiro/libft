@@ -34,4 +34,3 @@ char	*ft_strtrim(char const *s1, char const *set)
 	ft_memcpy(str, s1 + start, str_len);
 	return (str);
 }
-
