@@ -6,7 +6,7 @@
 /*   By: paude-so <paude-so@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 16:03:21 by paude-so          #+#    #+#             */
-/*   Updated: 2024/10/31 13:27:11 by paude-so         ###   ########.fr       */
+/*   Updated: 2024/10/31 14:25:59 by paude-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -224,70 +224,81 @@ void	test_memcmp(void)
 
 void	test_atoi(void)
 {
+	printf("\t\tft_atoi\n\n");
 	char	*str = "   -42";
 
-	printf("ft_atoi: %d | atoi: %d\n", ft_atoi(str), atoi(str));
+	printf("  String: %s\n  ft_atoi: %d\n", ft_atoi(str), atoi(str));
 }
 
 void	test_substr(void)
 {
-	char const	*str = "teste123";
+	printf("\t\tft_substr\n\n");
+	char const		*str = "teste123";
+	unsigned int	start = 5;
+	size_t			max = 2;
 	
-	printf("ft_substr:\nInput: %s | ft_substr: %s | expected: 123\n", str, ft_substr(str, 5, sizeof(str)));
+	printf("  Input string: %s\n  Start at char: %d | Max length of: %zu\n  After ft_substr: %s", str, start, max, ft_substr(str, start, max));
 }
 
 void	test_strjoin(void)
 {
+	printf("\t\tft_strjoin\n\n");
 	char const	*s1 = "abc";
 	char const	*s2 = "def";
 
-	printf("ft_strjoin:\nString 1: %s | String 2: %s | ft_strjoin: %s | expected: abcdef\n", s1, s2, ft_strjoin(s1, s2));
+	printf("  String 1: %s | String 2: %s\n  After ft_strjoin: %s", s1, s2, ft_strjoin(s1, s2));
 }
 
 
 void	test_ft_putchar_fd(void)
 {
+	printf("\t\tft_putchar_fd\n\n");
 	char	c = 'A';
-	printf("ft_putchar_fd: ");
+	printf("  With printf: %c\n", c);
+	printf("  With ft_putchar_fd: ");
 	fflush(stdout);
 	ft_putchar_fd(c, 1);
-	printf(" | expected: %c\n", c);
 }
 
 void	test_ft_putstr_fd(void)
 {
+	printf("\t\tft_putstr_fd\n\n");
 	char	*str = "But everybody call me Giorgio";
-	printf("ft_putstr_fd: ");
+	printf("  With printf: %s\n", str);
+	printf("  With ft_putstr_fd: ");
 	fflush(stdout);
 	ft_putstr_fd(str, 1);
-	printf(" | expected: %s\n", str);
 }
 void	test_ft_putendl_fd(void)
 {
+	printf("\t\tft_putendl_fd\n\n");
 	char	*str = "But everybody call me Giorgio";
-	printf("ft_putendl_fd: ");
+	printf("  Testing string: %s\n", str);
+	printf("  After ft_putendl_fd: ");
 	fflush(stdout);
 	ft_putendl_fd(str, 1);
-	printf(" | expected: %s\n", str);
+	printf("  $");
 }
 
 void	test_ft_putnbr_fd(void)
 {
+	printf("\t\tft_putnbr_fd\n\n");
 	int	n = -85730;
-	printf("ft_puntbr_fd: ");
+	printf("  Integer: %d\n", n);
+	printf("  After ft_puntbr_fd: ");
 	fflush(stdout);
 	ft_putnbr_fd(n, 1);
-	printf(" | expected: %d\n", n);
 }
 
 void	test_ft_itoa(void)
 {
+	printf("\t\tft_itoa\n\n");
 	int	nb1 = -2147483648;
-	printf("ft_itoa: %s | expected: %d\n", ft_itoa(nb1), nb1);
+	printf("  Integer: %d | After ft_itoa: %s\n", nb1, ft_itoa(nb1));
 	int	nb2 = 0;
-	printf("ft_itoa: %s | expected: %d\n", ft_itoa(nb2), nb2);
+	printf("  Integer: %d | After ft_itoa: %s\n", nb2, ft_itoa(nb2));
 	int	nb3 = 2147483647;
-	printf("ft_itoa: %s | expected: %d\n", ft_itoa(nb3), nb3);
+	printf("  Integer: %d | After ft_itoa: %s", nb3, ft_itoa(nb3));
 }
 
 char custom_toupper(unsigned int i, char c)
@@ -299,8 +310,9 @@ char custom_toupper(unsigned int i, char c)
 void	test_ft_strmapi(void)
 {
 	char	*str = "abc";
-
-	printf("ft_strmapi: %s\n", ft_strmapi(str, custom_toupper));
+	printf("\t\tft_strmapi\n\n");
+	printf("  Original string: %s\n", str);
+	printf("  After ft_strmapi: %s\n", ft_strmapi(str, custom_toupper));
 }
 
 void custom_tolower(unsigned int i, char *c)
@@ -312,9 +324,10 @@ void custom_tolower(unsigned int i, char *c)
 void	test_ft_striteri(void)
 {
 	char	str[] = "ABC";
+	printf("\t\tft_striteri\n\n");
+	printf("  Original string: %s\n", str);
 	ft_striteri(str, custom_tolower);
-
-	printf("ft_striteri: %s\n", str);
+	printf("  After ft_striteri: %s\n", str);
 	
 }
 
@@ -322,8 +335,8 @@ void	test_ft_strtrim(void)
 {
 	char	*str = "aaaiiiaaiaMy name is Giovanni Giorgioiiaaiaiaiaaii";
 	char	*trim = "ai";
-
-	printf("ft_strtrim: %s\n", ft_strtrim(str, trim));
+	printf("\t\tft_strtrim\n\n");
+	printf("  Original string: %s\n  To be trimmed with: %s\n  After ft_strtrim: %s\n",str, trim, ft_strtrim(str, trim));
 }
 
 int	main(void)
@@ -398,7 +411,7 @@ int	main(void)
 	printf("\n");
 	printf("\n");
 	test_atoi();
-	printf("\n\n\tThere's no C native functions of the functions\n\tbelow, so the output is expected\n\taccording to the project description\n\n\n");
+	printf("\n\n\tThere's no C native functions of the functions\n\t\tbelow, so the output is expected\n\t      according to the project description\n\n\n");
 	test_substr();
 	printf("\n");
 	printf("\n");
