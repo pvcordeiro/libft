@@ -6,7 +6,7 @@
 /*   By: paude-so <paude-so@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 12:00:54 by paude-so          #+#    #+#             */
-/*   Updated: 2024/10/30 20:55:12 by paude-so         ###   ########.fr       */
+/*   Updated: 2024/10/31 12:23:24 by paude-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,10 @@ char	*ft_itoa(int n)
 
 	nb = n;
 	digits = ft_int_counter(nb);
-	str = malloc((digits + 1) * sizeof(char));
+	str = (char *)malloc((digits + 1) * sizeof(char));
 	if (!str)
 		return (NULL);
-	str[digits] = 0;
+	ft_bzero(str, digits + 1);
 	if (nb < 0)
 	{
 		str[0] = '-';
