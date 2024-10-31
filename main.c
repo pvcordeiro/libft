@@ -6,7 +6,7 @@
 /*   By: paude-so <paude-so@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 16:03:21 by paude-so          #+#    #+#             */
-/*   Updated: 2024/10/31 13:23:47 by paude-so         ###   ########.fr       */
+/*   Updated: 2024/10/31 13:27:11 by paude-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -424,6 +424,9 @@ int	main(void)
 	printf("\n");
 	printf("\n");
 	test_ft_striteri();
+	printf("\n");
+	printf("\n");
+	test_ft_strtrim();
 	printf("\n");
 	printf("\n");
 	
