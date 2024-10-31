@@ -6,7 +6,7 @@
 /*   By: paude-so <paude-so@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 16:03:21 by paude-so          #+#    #+#             */
-/*   Updated: 2024/10/30 21:22:30 by paude-so         ###   ########.fr       */
+/*   Updated: 2024/10/31 11:57:37 by paude-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -316,9 +316,17 @@ void	test_ft_striteri(void)
 	
 }
 
+void	test_ft_strtrim(void)
+{
+	char	*str = "aaaiiiaaiaMy name is Giovanni Giorgioiiaaiaiaiaaii";
+	char	*trim = "ai";
+
+	printf("ft_strtrim: %s\n", ft_strtrim(str, trim))
+}
+
 int	main(void)
 {
-	printf("\tThe output of the first four functions are not the same\n\tbecause the standard library returns a non-zero\n\tvalue or 0, so even though the outputs are not the same,\n\tthey behave the same way by returning basically\n\ttrue(non-zero) or false(0)\n");
+	printf("\tThe output of the first four functions are different\n\tbecause the standard library returns a non-zero\n\tvalue or 0, so even though the outputs are not the same,\n\tthey behave the same way by returning basically\n\ttrue(non-zero) or false(0)\n");
 	printf("\n");
 	printf("\n");
 	test_isalnum();
