@@ -6,7 +6,7 @@
 /*   By: paude-so <paude-so@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 16:03:21 by paude-so          #+#    #+#             */
-/*   Updated: 2024/10/31 11:57:37 by paude-so         ###   ########.fr       */
+/*   Updated: 2024/10/31 12:54:57 by paude-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,13 +75,13 @@ void	test_strlen(void)
 void	test_strlcpy(void)
 {
 	char	src[] = "Hello, World!";
-	char	ft_dst[20];
-	char	dst[20];
+	char	ft_dst[sizeof(src)];
+	char	dst[sizeof(src)];
 	size_t	ft;
 	size_t	orig;
 
 	ft = ft_strlcpy(ft_dst, src, sizeof(ft_dst));
-	orig = ft_strlcpy(dst, src, sizeof(dst));
+	orig = strlcpy(dst, src, sizeof(dst));
 	printf("ft_strlcpy: %s | strlcpy: %s\n", ft_dst, dst);
 	printf("ft_strlcpy return: %zu | strlcpy return: %zu\n", ft, orig);
 }
@@ -116,19 +116,19 @@ void	test_memset(void)
 	char	ft_str[] = "abcdefghi";
 	char	str[] = "abcdefghi";
 
-	ft_memset(ft_str, 48, 4);
-	memset(str, 48, 4);
+	ft_memset(ft_str, 'Z', 4);
+	memset(str, 'Z', 4);
 	printf("ft_memset: %s | memset: %s\n", ft_str, str);
 }
 
 void	test_memcpy(void)
 {
-	char	ft_dest[10];
-	char	dest[10];
+	char	ft_dest[] = "Original";
+	char	dest[] = "Original";
 	char	src[] = "Hello";
 
-	ft_memcpy(ft_dest, src, 6);
-	memcpy(dest, src, 6);
+	ft_memcpy(ft_dest, src, 4);
+	memcpy(dest, src, 4);
 	printf("ft_memcpy: %s | memcpy: %s\n", ft_dest, dest);
 }
 
@@ -174,7 +174,7 @@ void	test_calloc(void)
 void	test_strnstr(void)
 {
 	char	*big = "Hello there!";
-	char	*little = "there";
+	char	*little = "t";
 
 	printf("ft_strnstr: %s | strnstr: %s\n", ft_strnstr(big, little, strlen(big)), strnstr(big, little, strlen(big)));
 }
@@ -182,15 +182,17 @@ void	test_strnstr(void)
 void	test_strrchr(void)
 {
 	char	str[] = "Hello, World!";
+	char	c = 'l';
 
-	printf("ft_strrchr: %s | strrchr: %s\n", ft_strrchr(str, '\0'), strrchr(str, '\0'));
+	printf("ft_strrchr: %s | strrchr: %s\n", ft_strrchr(str, c), strrchr(str, c));
 }
 
 void	test_strchr(void)
 {
 	char	str[] = "Hello, World!";
+	char	c = 'o';
 
-	printf("ft_strchr: %s | strchr: %s\n", ft_strchr(str, 'W'), strchr(str, 'W'));
+	printf("ft_strchr: %s | strchr: %s\n", ft_strchr(str, c), strchr(str, c));
 }
 
 void	test_strdup(void)
@@ -207,7 +209,7 @@ void	test_strdup(void)
 void	test_strncmp(void)
 {
 	char	*s1 = "Hello";
-	char	*s2 = "Hellt";
+	char	*s2 = "Helto";
 
 	printf("ft_strncmp: %d | strncmp: %d\n", ft_strncmp(s1, s2, 4), strncmp(s1, s2, 4));
 }
@@ -215,7 +217,7 @@ void	test_strncmp(void)
 void	test_memcmp(void)
 {
 	char	str1[] = "abcdef";
-	char	str2[] = "abcdep";
+	char	str2[] = "abcZef";
 
 	printf("ft_memcmp: %d | memcmp: %d\n", ft_memcmp(str1, str2, 6), memcmp(str1, str2, 6));
 }
@@ -321,7 +323,7 @@ void	test_ft_strtrim(void)
 	char	*str = "aaaiiiaaiaMy name is Giovanni Giorgioiiaaiaiaiaaii";
 	char	*trim = "ai";
 
-	printf("ft_strtrim: %s\n", ft_strtrim(str, trim))
+	printf("ft_strtrim: %s\n", ft_strtrim(str, trim));
 }
 
 int	main(void)
