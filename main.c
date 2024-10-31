@@ -6,7 +6,7 @@
 /*   By: paude-so <paude-so@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 16:03:21 by paude-so          #+#    #+#             */
-/*   Updated: 2024/10/31 17:15:52 by paude-so         ###   ########.fr       */
+/*   Updated: 2024/10/31 17:58:47 by paude-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include <stddef.h>
 #include <ctype.h>
 #include <bsd/string.h>
+
 
 void	test_isalnum(void)
 {
