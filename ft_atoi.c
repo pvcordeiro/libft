@@ -6,7 +6,7 @@
 /*   By: paude-so <paude-so@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 21:01:02 by paude-so          #+#    #+#             */
-/*   Updated: 2024/10/23 21:11:35 by paude-so         ###   ########.fr       */
+/*   Updated: 2024/10/31 12:17:37 by paude-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	ft_atoi(const char *nptr)
 			sign = -sign;
 		i++;
 	}
-	while (nptr[i] >= '0' && nptr[i] <= '9')
+	while (ft_isdigit(nptr[i]))
 	{
 		result = result * 10 + (nptr[i] - '0');
 		i++;
