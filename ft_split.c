@@ -6,12 +6,11 @@
 /*   By: paude-so <paude-so@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 18:06:11 by paude-so          #+#    #+#             */
-/*   Updated: 2024/10/31 19:58:57 by paude-so         ###   ########.fr       */
+/*   Updated: 2024/10/31 20:34:53 by paude-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
 static size_t	w_count(char const *s, char c)
 {
@@ -20,7 +19,7 @@ static size_t	w_count(char const *s, char c)
 
 	count = 0;
 	word = 0;
-	while(*s)
+	while (*s)
 	{
 		if (*s != c)
 		{
@@ -37,27 +36,52 @@ static size_t	w_count(char const *s, char c)
 	return (count);
 }
 
+static void	v_init(size_t *a, size_t *b)
+{
+	*a = 0;
+	*b = 0;
+}
+
+static void	*panic_button(char **arr, size_t sub_i)
+{
+	size_t	i;
+
+	i = 0;
+	while (i < sub_i)
+	{
+		free(arr[i]);
+		i++;
+	}
+	free(arr);
+	return (NULL);
+}
+
 char	**ft_split(char const *s, char c)
 {
 	char	**arr;
-	size_t	sub_size = 0;
-	size_t	i = 0;
+	size_t	sub_i;
+	size_t	i;
 	size_t	start;
-	
+
+	if (!s)
+		return (NULL);
 	arr = (char **)ft_calloc((w_count(s, c) + 1), sizeof(char *));
 	if (!arr)
 		return (NULL);
+	v_init(&sub_i, &i);
 	while (s[i])
 	{
-		while(s[i] == c)
+		while (s[i] == c)
 			i++;
 		start = i;
-		while(s[i] && s[i] != c)
+		while (s[i] && s[i++] != c)
 			i++;
 		if (start < i)
 		{
-			arr[sub_size] = ft_substr(s, start, i - start);
-			sub_size++;
+			arr[sub_i] = ft_substr(s, start, i - start);
+			if (!arr[sub_i])
+				return (panic_button(arr, sub_i));
+			sub_i++;
 		}
 	}
 	return (arr);

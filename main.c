@@ -6,7 +6,7 @@
 /*   By: paude-so <paude-so@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 16:03:21 by paude-so          #+#    #+#             */
-/*   Updated: 2024/10/31 19:59:06 by paude-so         ###   ########.fr       */
+/*   Updated: 2024/10/31 20:32:49 by paude-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -345,11 +345,13 @@ void	test_ft_split(void)
 {
 	char	*str = "My name is Giovanni Giorgio but everybody calls me Giorgio";
 	char	c = ' ';
-	char	**result = ft_split(str, c);
 	size_t	i = 0;
+	char	**result = ft_split(str, c);
 	
 	printf("\t\tft_split\n\n");
 	printf("  Original string: \"%s\"\n  Separator: \"%c\"\n  Output:\n", str, c);
+	if (!result)
+		return ;
 	while(result[i])
 	{
 		printf("           \"%s\"\n", result[i]);
