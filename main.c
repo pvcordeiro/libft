@@ -6,7 +6,7 @@
 /*   By: paude-so <paude-so@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 16:03:21 by paude-so          #+#    #+#             */
-/*   Updated: 2024/10/31 15:03:46 by paude-so         ###   ########.fr       */
+/*   Updated: 2024/10/31 17:15:52 by paude-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -157,18 +157,14 @@ void	test_memchr(void)
 
 void	test_calloc(void)
 {
-	size_t		n = 5;
-	size_t		*ft_arr = (size_t *)ft_calloc(n, sizeof(size_t));
-	size_t		*arr = (size_t *)calloc(n, sizeof(size_t));
-	size_t		i = 0;
-
-	while (i < n)
-	{
-		printf("ft_calloc arr[%zu]: %zu | calloc arr[%zu]: %zu\n", i, ft_arr[i], i, arr[i]);
-		i++;
-	}
-	free(ft_arr);
-	free(arr);
+	printf("\t\tft_calloc\n\n");
+	size_t	n = 5;
+	char	*arr_ft = "ABC";
+	char	*arr = "ABC";
+	printf("  arr_ft before ft_calloc: %s | arr before calloc: %s\n", arr_ft, arr);
+	arr_ft = (char *)ft_calloc(n, sizeof(char));
+	arr = (char *)calloc(n, sizeof(char));
+	printf("  arr_ft after ft_calloc: %s    | arr after calloc: %s\n", arr_ft, arr);
 }
 
 void	test_strnstr(void)
@@ -189,37 +185,42 @@ void	test_strrchr(void)
 
 void	test_strchr(void)
 {
+	printf("\t\tft_strchr\n\n");
 	char	str[] = "Hello, World!";
 	char	c = 'o';
 
-	printf("ft_strchr: %s | strchr: %s\n", ft_strchr(str, c), strchr(str, c));
+	printf("  String: %s | Char: %c\n  ft_strchr: %s\n  strchr: %s\n", str, c, ft_strchr(str, c), strchr(str, c));
 }
 
 void	test_strdup(void)
 {
+	printf("\t\tft_strdup\n\n");
 	char	*str = "Hello, World!";
 	char	*ft_dup = ft_strdup(str);
 	char	*dup = strdup(str);
 
-	printf("ft_strdup: %s | strdup: %s\n", ft_dup, dup);
+	printf("  Source string: %s\n  ft_strdup: %s\n  strdup: %s\n", str, ft_dup, dup);
 	free(ft_dup);
 	free(dup);
 }
 
 void	test_strncmp(void)
 {
+	printf("\t\tft_strncmp\n\n");
 	char	*s1 = "Hello";
 	char	*s2 = "Helto";
+	size_t	n = 4;
 
-	printf("ft_strncmp: %d | strncmp: %d\n", ft_strncmp(s1, s2, 4), strncmp(s1, s2, 4));
+	printf("  String1: %s | String2: %s\n  ft_strncmp: %d\n  strncmp: %d\n", s1, s2, ft_strncmp(s1, s2, n), strncmp(s1, s2, n));
 }
 
 void	test_memcmp(void)
 {
+	printf("\t\tft_memcmp\n\n");
 	char	str1[] = "abcdef";
 	char	str2[] = "abcZef";
 
-	printf("ft_memcmp: %d | memcmp: %d\n", ft_memcmp(str1, str2, 6), memcmp(str1, str2, 6));
+	printf("  String1: %s | String2: %s\n  ft_memcmp: %d\n  memcmp: %d\n",str1, str2, ft_memcmp(str1, str2, 6), memcmp(str1, str2, 6));
 }
 
 void	test_atoi(void)
@@ -294,11 +295,11 @@ void	test_ft_itoa(void)
 {
 	printf("\t\tft_itoa\n\n");
 	int	nb1 = -2147483648;
-	printf("  Integer: %d | After ft_itoa: %s\n", nb1, ft_itoa(nb1));
+	printf("  Integer: \"%d\" | After ft_itoa: \"%s\"\n", nb1, ft_itoa(nb1));
 	int	nb2 = 0;
-	printf("  Integer: %d | After ft_itoa: %s\n", nb2, ft_itoa(nb2));
+	printf("  Integer: \"%d\" | After ft_itoa: \"%s\"\n", nb2, ft_itoa(nb2));
 	int	nb3 = 2147483647;
-	printf("  Integer: %d | After ft_itoa: %s", nb3, ft_itoa(nb3));
+	printf("  Integer: \"%d\" | After ft_itoa: \"%s\"", nb3, ft_itoa(nb3));
 }
 
 char custom_toupper(unsigned int i, char c)
@@ -311,8 +312,8 @@ void	test_ft_strmapi(void)
 {
 	char	*str = "abc";
 	printf("\t\tft_strmapi\n\n");
-	printf("  Original string: %s\n", str);
-	printf("  After ft_strmapi: %s\n", ft_strmapi(str, custom_toupper));
+	printf("  Original string: \"%s\"", str);
+	printf("  After ft_strmapi: \"%s\"", ft_strmapi(str, custom_toupper));
 }
 
 void custom_tolower(unsigned int i, char *c)
@@ -325,9 +326,9 @@ void	test_ft_striteri(void)
 {
 	char	str[] = "ABC";
 	printf("\t\tft_striteri\n\n");
-	printf("  Original string: %s\n", str);
+	printf("  Original string: \"%s\"", str);
 	ft_striteri(str, custom_tolower);
-	printf("  After ft_striteri: %s\n", str);
+	printf("  After ft_striteri: \"%s\"", str);
 	
 }
 
@@ -336,7 +337,7 @@ void	test_ft_strtrim(void)
 	char	*str = "aaaiiiaaiaMy name is Giovanni Giorgioiiaaiaiaiaaii";
 	char	*trim = "ai";
 	printf("\t\tft_strtrim\n\n");
-	printf("  Original string: %s\n  To be trimmed with: %s\n  After ft_strtrim: %s\n",str, trim, ft_strtrim(str, trim));
+	printf("  Original string: \"%s\"\n  To be trimmed with: \"%s\"\n  After ft_strtrim: \"%s\"\n",str, trim, ft_strtrim(str, trim));
 }
 
 int	main(void)

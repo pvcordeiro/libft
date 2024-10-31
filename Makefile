@@ -3,16 +3,18 @@ SRCS = ft_atoi.c ft_bzero.c ft_calloc.c ft_isalnum.c ft_isalpha.c ft_isascii.c f
 OBJS = $(SRCS:.c=.o)
 NAME = libft.a
 
-all: $(NAME) compile
-	@echo "\nCreating library $(NAME)\n"
-
 $(NAME): $(OBJS)
 	@ar rcs $(NAME) $(OBJS)
-# remove this below before sending
+
+compile: $(OBJS)
+	@echo "\nCompiling .c files into .o files\n"
+
+all: $(NAME) compile
+	@echo "\nCreating library $(NAME)\n"
+# comment this below before sending
 test: $(NAME)
-	@echo "\nCompiling main into .o and linking it\n"
-	@$(CC) -I. -c main.c -o main.o
-	@$(CC) main.o -L. -lft -lbsd -o test
+	@echo "\nCompiling main with $(NAME)\n"
+	@$(CC) main.c $(NAME) -lbsd -o test
 	@echo "\n\n\t\t\tTests bellow\n\n\n"
 	@./test
 # ^^^^^^^^^
@@ -23,11 +25,8 @@ clean:
 fclean: clean
 	@echo "\nRemoving library $(NAME) and object files\n"
 	@rm -f $(NAME) main.o test
-#        remove this ^     ^
+#     remove main.o ^ test ^
 re: fclean all test
-#remove this    ^
+#   remove test ^
 $(OBJS): %.o: %.c
 	@$(CC) -I. -c $< -o $@
-
-compile: $(OBJS)
-	@echo "\nCompiling .c files into .o files\n"
