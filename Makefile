@@ -17,6 +17,7 @@ test: $(NAME)
 	@$(CC) main.c $(NAME) -lbsd -o test
 	@echo "\n\n\t\t\tTests bellow\n\n\n"
 	@./test
+	@rm -f $(OBJS)
 # ^^^^^^^^^
 clean:
 	@echo "\nCleaning object files\n"

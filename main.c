@@ -6,7 +6,7 @@
 /*   By: paude-so <paude-so@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 16:03:21 by paude-so          #+#    #+#             */
-/*   Updated: 2024/10/31 18:23:34 by paude-so         ###   ########.fr       */
+/*   Updated: 2024/10/31 19:59:06 by paude-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -338,21 +338,21 @@ void	test_ft_strtrim(void)
 	char	*str = "aaaiiiaaiaMy name is Giovanni Giorgioiiaaiaiaiaaii";
 	char	*trim = "ai";
 	printf("\t\tft_strtrim\n\n");
-	printf("  Original string: \"%s\"\n  To be trimmed with: \"%s\"\n  After ft_strtrim: \"%s\"\n",str, trim, ft_strtrim(str, trim));
+	printf("  Original string: \"%s\"\n  To be trimmed with: \"%s\"\n  After ft_strtrim: \"%s\"",str, trim, ft_strtrim(str, trim));
 }
 
 void	test_ft_split(void)
 {
-	char	*str = "Gooday Sir my name is Giovanni Giorgio but everybody calls me Giorgio";
+	char	*str = "My name is Giovanni Giorgio but everybody calls me Giorgio";
 	char	c = ' ';
 	char	**result = ft_split(str, c);
 	size_t	i = 0;
 	
 	printf("\t\tft_split\n\n");
-	printf("  Original string: \"%s\"\n  Separator: \"%c\"\n  Output:\n")
+	printf("  Original string: \"%s\"\n  Separator: \"%c\"\n  Output:\n", str, c);
 	while(result[i])
 	{
-		printf("\t\t\"%s\"\n", result[i]);
+		printf("           \"%s\"\n", result[i]);
 		free(result[i]);
 		i++;
 	}
@@ -460,6 +460,8 @@ int	main(void)
 	printf("\n");
 	printf("\n");
 	test_ft_strtrim();
+	printf("\n");
+	printf("\n");
 	test_ft_split();
 	printf("\n");
 	printf("\n");
