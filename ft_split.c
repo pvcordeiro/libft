@@ -6,7 +6,7 @@
 /*   By: paude-so <paude-so@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 18:06:11 by paude-so          #+#    #+#             */
-/*   Updated: 2024/10/31 20:34:53 by paude-so         ###   ########.fr       */
+/*   Updated: 2024/10/31 20:37:06 by paude-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,11 +71,9 @@ char	**ft_split(char const *s, char c)
 	v_init(&sub_i, &i);
 	while (s[i])
 	{
-		while (s[i] == c)
-			i++;
+		while (s[i] == c) i++;
 		start = i;
-		while (s[i] && s[i++] != c)
-			i++;
+		while (s[i] && s[i] != c) i++;
 		if (start < i)
 		{
 			arr[sub_i] = ft_substr(s, start, i - start);
