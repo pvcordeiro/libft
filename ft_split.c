@@ -6,7 +6,7 @@
 /*   By: paude-so <paude-so@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 18:06:11 by paude-so          #+#    #+#             */
-/*   Updated: 2024/10/31 21:01:48 by paude-so         ###   ########.fr       */
+/*   Updated: 2024/11/01 11:20:58 by paude-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 static size_t	w_count(char const *s, char c)
 {
-	int	count;
-	int	word;
+	size_t	count;
+	size_t	word;
 
 	count = 0;
 	word = 0;
@@ -36,12 +36,6 @@ static size_t	w_count(char const *s, char c)
 	return (count);
 }
 
-static void	v_init(size_t *a, size_t *b)
-{
-	*a = 0;
-	*b = 0;
-}
-
 static void	*panic_button(char **arr, size_t sub_i)
 {
 	size_t	i;
@@ -56,33 +50,65 @@ static void	*panic_button(char **arr, size_t sub_i)
 	return (NULL);
 }
 
+static void	fill_words(char **str, const char *s, char c, size_t *i)
+{
+	size_t	len;
+
+	while (*s == c)
+		s++;
+	if (!*s)
+		return ;
+	len = 0;
+	while (s[len] && s[len] != c)
+		len++;
+	str[*i] = ft_substr(s, 0, len);
+	if (!str[*i])
+	{
+		panic_button(str, *i);
+		return ;
+	}
+	(*i)++;
+	fill_words(str, s + len, c, i);
+}
+// static void	**null_handler(char **str, char const *s, char c)
+// {
+// 	if (!s || !*s)
+// 	{
+// 		str = (char **)ft_calloc(1, sizeof(char *));
+// 		if (!str)
+// 			return (NULL);
+// 		return (str);
+// 	}
+// 	if (!c)
+// 	{
+// 		str = (char **)ft_calloc(1, sizeof(char *));
+// 		if (!str)
+// 			return (NULL);
+// 		str[0] = ft_strdup(s);
+// 		return (str);
+// 	}	
+// }
+
 char	**ft_split(char const *s, char c)
 {
-	char	**arr;
-	size_t	sub_i;
+	char	**str;
 	size_t	i;
-	size_t	start;
 
-	if (!s)
-		return (NULL);
-	arr = (char **)ft_calloc((w_count(s, c) + 1), sizeof(char *));
-	if (!arr)
-		return (NULL);
-	v_init(&sub_i, &i);
-	while (s[i])
+	i = 0;
+	if (!s || !*s)
+		return ((char **)ft_calloc(1, sizeof(char *)));
+	if (!c)
 	{
-		while (s[i] == c)
-			i++;
-		start = i;
-		while (s[i] && s[i] != c)
-			i++;
-		if (start < i)
-		{
-			arr[sub_i] = ft_substr(s, start, i - start);
-			if (!arr[sub_i])
-				return (panic_button(arr, sub_i));
-			sub_i++;
-		}
+		str = (char **)ft_calloc(1, sizeof(char *));
+		if (!str)
+			return (NULL);
+		str[0] = ft_strdup(s);
+		return (str);
 	}
-	return (arr);
+	str = (char **)ft_calloc(w_count(s, c) + 1, sizeof(char *));
+	if (!str)
+		return (NULL);
+	fill_words(str, s, c, &i);
+	str[i] = NULL;
+	return (str);
 }
