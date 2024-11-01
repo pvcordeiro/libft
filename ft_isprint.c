@@ -6,9 +6,11 @@
 /*   By: paude-so <paude-so@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 20:25:06 by paude-so          #+#    #+#             */
-/*   Updated: 2024/10/23 20:34:26 by paude-so         ###   ########.fr       */
+/*   Updated: 2024/11/01 21:41:35 by paude-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 int	ft_isprint(int c)
 {

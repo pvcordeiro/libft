@@ -6,9 +6,11 @@
 /*   By: paude-so <paude-so@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 20:12:14 by paude-so          #+#    #+#             */
-/*   Updated: 2024/10/28 20:00:08 by paude-so         ###   ########.fr       */
+/*   Updated: 2024/11/01 21:41:22 by paude-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 int	ft_isalpha(int c)
 {
