@@ -109,7 +109,7 @@ The bonus part introduces linked lists, allowing for more advanced data manageme
 Clone the repository and navigate to the directory:
 
 ```bash
-git clone https://github.com/yourusername/libft.git
+git clone https://github.com/pvcordeiro/libft.git
 cd libft
 ```
 
