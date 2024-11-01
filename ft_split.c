@@ -6,7 +6,7 @@
 /*   By: paude-so <paude-so@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 18:06:11 by paude-so          #+#    #+#             */
-/*   Updated: 2024/11/01 19:07:11 by paude-so         ###   ########.fr       */
+/*   Updated: 2024/11/01 20:15:30 by paude-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,10 +48,8 @@ static void	ft_freearrs(char **arr)
 
 static void	ft_fill_words(char **str, const char *s, char c)
 {
-	char		**current;
 	const char	*start;
 
-	current = str;
 	while (*s == c)
 		s++;
 	while (*s)
@@ -59,13 +57,13 @@ static void	ft_fill_words(char **str, const char *s, char c)
 		start = s;
 		while (*s && *s != c)
 			s++;
-		*current = ft_substr(start, 0, s - start);
-		if (!*current)
+		*str = ft_substr(start, 0, s - start);
+		if (!*str)
 		{
 			ft_freearrs(str);
 			return ;
 		}
-		current++;
+		str++;
 		while (*s == c)
 			s++;
 	}
