@@ -6,7 +6,7 @@
 /*   By: paude-so <paude-so@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 18:06:11 by paude-so          #+#    #+#             */
-/*   Updated: 2024/11/01 11:53:24 by paude-so         ###   ########.fr       */
+/*   Updated: 2024/11/01 12:39:57 by paude-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,23 +15,20 @@
 static size_t	ft_w_count(char const *s, char c)
 {
 	size_t	count;
-	size_t	word;
 
 	count = 0;
-	word = 0;
+	while (*s == c)
+		s++;
 	while (*s)
 	{
 		if (*s != c)
 		{
-			if (!word)
-			{
-				word = 1;
-				count++;
-			}
+			count++;
+			while (*s && *s != c)
+				s++;
 		}
 		else
-			word = 0;
-		s++;
+			s++;
 	}
 	return (count);
 }
@@ -50,25 +47,30 @@ static void	*ft_freearrs(char **arr, size_t sub_i)
 	return (NULL);
 }
 
-static void	ft_fill_words(char **str, const char *s, char c, size_t *i)
+static void	ft_fill_words(char **str, const char *s, char c)
 {
 	size_t	len;
+	size_t	i;
 
+	i = 0;
 	while (*s == c)
 		s++;
-	if (!*s)
-		return ;
-	len = 0;
-	while (s[len] && s[len] != c)
-		len++;
-	str[*i] = ft_substr(s, 0, len);
-	if (!str[*i])
+	while (*s)
 	{
-		ft_freearrs(str, *i);
-		return ;
+		len = 0;
+		while (s[len] && s[len] != c)
+			len++;
+		str[i] = ft_substr(s, 0, len);
+		if (!str[i])
+		{
+			ft_freearrs(str, i);
+			return ;
+		}
+		i++;
+		s += len;
+		while (*s == c)
+			s++;
 	}
-	(*i)++;
-	ft_fill_words(str, s + len, c, i);
 }
 static char **ft_base_cases(char **str, char const *s, char c)
 {
@@ -87,7 +89,6 @@ static char **ft_base_cases(char **str, char const *s, char c)
 char	**ft_split(char const *s, char c)
 {
 	char	**str;
-	size_t	i;
 
 	str = NULL;
 	str = ft_base_cases(str, s, c);
@@ -96,7 +97,6 @@ char	**ft_split(char const *s, char c)
 	str = (char **)ft_calloc(ft_w_count(s, c) + 1, sizeof(char *));
 	if (!str)
 		return (NULL);
-	i = 0;
-	ft_fill_words(str, s, c, &i);
+	ft_fill_words(str, s, c);
 	return (str);
 }

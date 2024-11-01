@@ -6,7 +6,7 @@
 /*   By: paude-so <paude-so@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 16:03:21 by paude-so          #+#    #+#             */
-/*   Updated: 2024/11/01 10:50:51 by paude-so         ###   ########.fr       */
+/*   Updated: 2024/11/01 12:08:44 by paude-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -343,9 +343,9 @@ void	test_ft_strtrim(void)
 
 void	test_ft_split(void)
 {
-	// char	*str = "My name is Giovanni Giorgio but everybody calls me Giorgio";
-	char	*str = "\0aa\0bbb";
-	char	c = '\0';
+	char	*str = "My name is Giovanni Giorgio but everybody calls me Giorgio";
+	// char	*str = "\0aa\0bbb";
+	char	c = ' ';
 	size_t	i = 0;
 	char	**result = ft_split(str, c);
 	
