@@ -6,7 +6,7 @@
 /*   By: paude-so <paude-so@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 18:06:11 by paude-so          #+#    #+#             */
-/*   Updated: 2024/11/01 20:15:30 by paude-so         ###   ########.fr       */
+/*   Updated: 2024/11/01 20:22:56 by paude-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,18 +17,16 @@ static size_t	ft_w_count(char const *s, char c)
 	size_t	count;
 
 	count = 0;
-	while (*s == c)
-		s++;
 	while (*s)
 	{
-		if (*s != c)
+		while (*s == c)
+			s++;
+		if (*s != c && *s)
 		{
 			count++;
 			while (*s && *s != c)
 				s++;
 		}
-		else
-			s++;
 	}
 	return (count);
 }
