@@ -6,7 +6,7 @@
 /*   By: paude-so <paude-so@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 18:06:11 by paude-so          #+#    #+#             */
-/*   Updated: 2024/11/01 13:23:22 by paude-so         ###   ########.fr       */
+/*   Updated: 2024/11/01 19:07:11 by paude-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,15 @@ static size_t	ft_w_count(char const *s, char c)
 
 static void	ft_freearrs(char **arr)
 {
+	char	**start;
+
+	start = arr;
 	while (*arr)
 	{
 		free(*arr);
 		arr++;
 	}
-	free(arr);
+	free(start);
 }
 
 static void	ft_fill_words(char **str, const char *s, char c)

@@ -3,31 +3,31 @@ SRCS = ft_atoi.c ft_bzero.c ft_calloc.c ft_isalnum.c ft_isalpha.c ft_isascii.c f
 OBJS = $(SRCS:.c=.o)
 NAME = libft.a
 
-$(NAME): $(OBJS)
+all: $(NAME)
+
+$(NAME): $(OBJS) compile
+	@echo "\nCreating static library $(NAME)\n"
 	@ar rcs $(NAME) $(OBJS)
 
 compile: $(OBJS)
 	@echo "\nCompiling .c files into .o files\n"
 
-all: $(NAME) compile
-	@echo "\nCreating library $(NAME)\n"
-# comment this below before sending
-test: $(NAME)
-	@echo "\nCompiling main with $(NAME)\n"
-	@$(CC) main.c $(NAME) -lbsd -o test
-	@echo "\n\n\t\t\tTests bellow\n\n\n"
-	@./test
-	@rm -f $(OBJS)
-# ^^^^^^^^^
+$(OBJS): %.o: %.c
+	@$(CC) -I. -c $< -o $@
+
 clean:
-	@echo "\nCleaning object files\n"
+	@echo "\nRemoving .o files\n"
 	@rm -f $(OBJS)
 
 fclean: clean
-	@echo "\nRemoving library $(NAME) and object files\n"
-	@rm -f $(NAME) main.o test
-#     remove main.o ^ test ^
-re: fclean all test
-#   remove test ^
-$(OBJS): %.o: %.c
-	@$(CC) -I. -c $< -o $@
+	@echo "\nRemoving library $(NAME)\n"
+	@rm -f $(NAME)
+
+re: fclean all
+#comment bellow before sending
+test: $(NAME)
+	@echo "\nCompiling main with $(NAME)\n"
+	@$(CC) main.c $(NAME) -lbsd -o test
+	@rm -f $(OBJS) $(NAME)
+	@./test
+	@rm -f test
