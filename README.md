@@ -123,7 +123,7 @@ make
 
 ## 🚀 Usage
 
-After compiling, you can include `libft.h` in your project and link `libft.a` with your code:
+After compiling, include `libft.h` in your project and link `libft.a` on compilation:
 
 ```c
 #include "libft.h"
@@ -135,7 +135,9 @@ int main() {
     return 0;
 }
 ```
-
+```bash
+cc filename.c libft.a -o output_name
+```
 ---
 
 ## 📝 Makefile Commands
