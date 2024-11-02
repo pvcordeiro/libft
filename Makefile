@@ -6,26 +6,34 @@ NAME = libft.a
 all: $(NAME)
 
 $(NAME): $(OBJS) compile
-	@echo "\nCreating static library $(NAME)\n"
+	@echo "\nCreating static library $(NAME)..."
 	@ar rcs $(NAME) $(OBJS)
+	@echo "\nDone!"
 
 compile: $(OBJS)
-	@echo "\nCompiling .c files into .o files\n"
+	@echo "\nCompiling .c files into .o files...\n\nDone!"
 
 $(OBJS): %.o: %.c
 	@$(CC) -I. -c $< -o $@
 
 clean:
-	@echo "\nRemoving .o files\n"
+	@echo "\nRemoving .o files..."
 	@rm -f $(OBJS)
+	@echo "\nDone!"
 
 fclean: clean
-	@echo "\nRemoving library $(NAME)\n"
+	@echo "\nRemoving library $(NAME)..."
 	@rm -f $(NAME)
+	@echo "\nDone!"
 
 re: fclean all
 #comment bellow before sending
 test: $(NAME)
-	@echo "\nCompiling main with $(NAME)\n"
+	@echo "\nCompiling main with $(NAME) into test..."
 	@$(CC) main.c $(NAME) -lbsd -o test
+	@echo "\nDone!"
+	@echo "\nCleaning everything up..."
 	@rm -f $(OBJS) $(NAME)
+	@echo "\nDone!\n\n"
+	@echo "\nRead the instructions bellow:\n"
+	@./test

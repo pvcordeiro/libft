@@ -6,7 +6,7 @@
 /*   By: paude-so <paude-so@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 16:03:21 by paude-so          #+#    #+#             */
-/*   Updated: 2024/11/02 16:45:10 by paude-so         ###   ########.fr       */
+/*   Updated: 2024/11/02 17:11:18 by paude-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -476,8 +476,8 @@ int main(int argc, char *argv[])
 	
     if (argc != 2)
 	{
-        printf("  Usage: %s [function_name (without ft_)]\n  Or %s all to test everything\n", argv[0], argv[0]);
-		return (1);
+        printf("Usage:\n  %s [function_name (without ft_)]\n  %s all to test everything\n", argv[0], argv[0]);
+		return (0);
     }
 	else
 	{
@@ -530,7 +530,7 @@ int main(int argc, char *argv[])
 			i++;
         }
         printf("%s not found!\n", argv[1]);
-        return (1);
+        return (0);
     }
 
     return (0);
