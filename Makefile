@@ -29,5 +29,3 @@ test: $(NAME)
 	@echo "\nCompiling main with $(NAME)\n"
 	@$(CC) main.c $(NAME) -lbsd -o test
 	@rm -f $(OBJS) $(NAME)
-	@./test
-	@rm -f test

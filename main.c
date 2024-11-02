@@ -6,7 +6,7 @@
 /*   By: paude-so <paude-so@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 16:03:21 by paude-so          #+#    #+#             */
-/*   Updated: 2024/11/01 21:29:01 by paude-so         ###   ########.fr       */
+/*   Updated: 2024/11/02 16:45:10 by paude-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 #include <stddef.h>
 #include <ctype.h>
 #include <bsd/string.h>
-
 
 void	test_isalpha(void)
 {
@@ -78,13 +77,15 @@ void	test_memset(void)
 
 void	test_bzero(void)
 {
+	printf("\t\t----ft_bzero----\n\n");
 	char	ft_str[] = "Hello, World!";
 	char	str[] = "Hello, World!";
 	size_t	n = 2;
 
+	printf("  Before ft_bzero: \"%s\"\n  Before bzero: \"%s\"\n  Max bzeroing: \"%zu\"\n\n", ft_str, str, n);
 	ft_bzero(ft_str, n);
 	bzero(str, n);
-	printf("ft_bzero: \"%s\" | bzero: \"%s\"\n", ft_str + n, str + n);
+	printf("  After ft_bzero: \"%s\"\n  After bzero: \"%s\"\n", ft_str + n, str + n);
 }
 
 void	test_memcpy(void)
@@ -385,7 +386,8 @@ void	test_ft_putnbr_fd(void)
 	ft_putnbr_fd(n, 1);
 	printf("\"\n");
 }
-int	main(void)
+
+void	run_all_tests(void)
 {
 	printf("\n\n\t\t\t  Tests bellow\n\n\n");
 	printf("\t\t\t\t|\n\t\t\t\t|\n\t\t\t\t|\n    The output of isalnum, isalpha, isdigit, and isprint are\n    different from mine because the standard library returns\n      a non-zero value or 0, so even though the outputs are\n          not the same, they behave the same way by\n       returning basically true(non-zero) or false(0)\n\t\t\t\t|\n\t\t\t\t|\n\t\t\t\t|\n");
@@ -460,6 +462,76 @@ int	main(void)
 	printf("\n\n");
 	test_ft_putnbr_fd();
 	printf("\n\n");
+}
 
-	return (0);
+typedef struct {
+    const char	*name;
+    void		(*func)();
+}	t_function_list;
+
+int main(int argc, char *argv[])
+{
+	size_t	num_functions;
+	size_t	i;
+	
+    if (argc != 2)
+	{
+        printf("  Usage: %s [function_name (without ft_)]\n  Or %s all to test everything\n", argv[0], argv[0]);
+		return (1);
+    }
+	else
+	{
+		t_function_list functions[] = {
+			{"all", run_all_tests},
+			{"isalpha", test_isalpha},
+			{"isdigit", test_isdigit},
+			{"isalnum", test_isalnum},
+			{"isascii", test_isascii},
+			{"isprint", test_isprint},
+			{"strlen", test_strlen},
+			{"memset", test_memset},
+			{"bzero", test_bzero},
+			{"memcpy", test_memcpy},
+			{"memmove", test_memmove},
+			{"strlcpy", test_strlcpy},
+			{"strlcat", test_strlcat},
+			{"toupper", test_toupper},
+			{"tolower", test_tolower},
+			{"strchr", test_strchr},
+			{"strrchr", test_strrchr},
+			{"strncmp", test_strncmp},
+			{"memchr", test_memchr},
+			{"memcmp", test_memcmp},
+			{"strnstr", test_strnstr},
+			{"atoi", test_atoi},
+			{"calloc", test_calloc},
+			{"strdup", test_strdup},
+			{"substr", test_substr},
+			{"strjoin", test_strjoin},
+			{"strtrim", test_ft_strtrim},
+			{"split", test_ft_split},
+			{"itoa", test_ft_itoa},
+			{"strmapi", test_ft_strmapi},
+			{"striteri", test_ft_striteri},
+			{"putchar_fd", test_ft_putchar_fd},
+			{"putstr_fd", test_ft_putstr_fd},
+			{"putendl_fd", test_ft_putendl_fd},
+			{"putnbr_fd", test_ft_putnbr_fd},
+		};
+        num_functions = sizeof(functions) / sizeof(functions[0]);
+		i = 0;
+        while (i < num_functions)
+		{
+            if (strcmp(argv[1], functions[i].name) == 0)
+			{
+                functions[i].func();
+                return (0);
+            }
+			i++;
+        }
+        printf("%s not found!\n", argv[1]);
+        return (1);
+    }
+
+    return (0);
 }
