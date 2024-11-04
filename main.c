@@ -6,7 +6,7 @@
 /*   By: paude-so <paude-so@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 16:03:21 by paude-so          #+#    #+#             */
-/*   Updated: 2024/11/04 10:48:34 by paude-so         ###   ########.fr       */
+/*   Updated: 2024/11/04 12:16:01 by paude-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,12 @@
 #include <stddef.h>
 #include <ctype.h>
 #include <bsd/string.h>
+
+typedef struct	s_function_list
+{
+    const char	*name;
+    void		(*func)();
+}				t_function_list;
 
 void	test_isalpha(void)
 {
@@ -387,6 +393,21 @@ void	test_ft_putnbr_fd(void)
 	printf("\"\n");
 }
 
+void	test_ft_lstnew(void)
+{
+	printf("\t\t----ft_lstnew----\n\n");
+	int *value = ft_calloc(1, sizeof(int));
+	*value = 42;
+	t_list *node = ft_lstnew(value);
+	
+	if (node)
+		printf("  Content of the new node: %d\n  Next pointer of the new node: %s\n", *(int *)node->content, node->next ? "Not NULL" : "NULL");
+	else
+		printf("  Failed to create new node.\n");
+	free(value);
+	free(node);
+}
+
 void	run_all_tests(void)
 {
 	printf("\n\n\t\t\t  Tests bellow\n\n\n");
@@ -462,12 +483,10 @@ void	run_all_tests(void)
 	printf("\n\n");
 	test_ft_putnbr_fd();
 	printf("\n\n");
+	test_ft_lstnew();
+	printf("\n\n");
+	
 }
-
-typedef struct {
-    const char	*name;
-    void		(*func)();
-}	t_function_list;
 
 int main(int argc, char *argv[])
 {
@@ -517,6 +536,7 @@ int main(int argc, char *argv[])
 			{"putstr_fd", test_ft_putstr_fd},
 			{"putendl_fd", test_ft_putendl_fd},
 			{"putnbr_fd", test_ft_putnbr_fd},
+			{"lstnew", test_ft_lstnew}
 		};
         num_functions = sizeof(functions) / sizeof(functions[0]);
 		i = 0;
