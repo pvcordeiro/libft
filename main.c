@@ -6,7 +6,7 @@
 /*   By: paude-so <paude-so@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 16:03:21 by paude-so          #+#    #+#             */
-/*   Updated: 2024/11/04 16:09:26 by paude-so         ###   ########.fr       */
+/*   Updated: 2024/11/04 18:28:06 by paude-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -405,9 +405,57 @@ void	test_ft_lstnew(void)
 	free(node);
 }
 
-void	test_ft_lstadd_front(void)
+void test_ft_lstadd_front(void)
 {
+    printf("\t\t----ft_lstadd_front----\n\n");
+
+    int value1 = 42;
+    t_list *node1 = ft_lstnew(&value1);
+    
+    int value2 = 24;
+    t_list *node2 = ft_lstnew(&value2);
+    
+    if (!node1 || !node2) {
+        if (node1)
+			free(node1);
+        if (node2)
+			free(node2);
+        return;
+    }
+
+    ft_lstadd_front(&node1, node2);
+
+    printf("  Content of the new head node: %d\n  Content of the next node: %d\n",
+           *(int *)node1->content, *(int *)node1->next->content);
+    
+    free(node1->next);
+    free(node1);
+}
+
+void	test_ft_lstsize(void)
+{
+	printf("\t\t----ft_lstsize----\n\n");
+	int value1 = 42;
+	t_list *node1 = ft_lstnew(&value1);
 	
+	int value2 = 24;
+	t_list *node2 = ft_lstnew(&value2);
+	
+	if (!node1 || !node2)
+	{
+		if (node1)
+			free(node1);
+		if (node2)
+			free(node2);
+		return;
+	}
+	
+	ft_lstadd_front(&node1, node2);
+
+	printf("  Content of head node: %d\n  Content of the next node: %d\n  Content of the next node: %s\n  Size of the list: %d\n", *(int *)node1->content, *(int *)node1->next->content, node1->next->next ? "Not NULL" : "NULL", ft_lstsize(node1));
+	
+	free(node1->next);
+	free(node1);
 }
 
 void	run_all_tests(void)
@@ -489,6 +537,8 @@ void	run_all_tests(void)
 	printf("\n\n");
 	test_ft_lstadd_front();
 	printf("\n\n");
+	test_ft_lstsize();
+	printf("\n\n");
 }
 
 int main(int argc, char *argv[])
@@ -541,6 +591,7 @@ int main(int argc, char *argv[])
 			{"putnbr_fd", test_ft_putnbr_fd},
 			{"lstnew", test_ft_lstnew},
 			{"lstadd_front", test_ft_lstadd_front},
+			{"lstsize", test_ft_lstsize},
 		};
         num_functions = sizeof(functions) / sizeof(functions[0]);
 		i = 0;
