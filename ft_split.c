@@ -6,7 +6,7 @@
 /*   By: paude-so <paude-so@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 18:06:11 by paude-so          #+#    #+#             */
-/*   Updated: 2024/11/04 13:53:24 by paude-so         ###   ########.fr       */
+/*   Updated: 2024/11/04 11:28:44 by paude-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static void	ft_freearrs(char **arr)
 	free(start);
 }
 
-static char	**ft_fill_words(char **str, const char *s, char c)
+static void	ft_fill_words(char **str, const char *s, char c)
 {
 	const char	*start;
 
@@ -57,12 +57,14 @@ static char	**ft_fill_words(char **str, const char *s, char c)
 			s++;
 		*str = ft_substr(start, 0, s - start);
 		if (!*str)
-			return (ft_freearrs(str), NULL);
+		{
+			ft_freearrs(str);
+			return ;
+		}
 		str++;
 		while (*s == c)
 			s++;
 	}
-	return (str);
 }
 
 static char	**ft_base_cases(char **str, char const *s, char c)
@@ -97,5 +99,6 @@ char	**ft_split(char const *s, char c)
 	str = (char **)ft_calloc(ft_w_count(s, c) + 1, sizeof(char *));
 	if (!str)
 		return (NULL);
-	return (ft_fill_words(str, s, c));
+	ft_fill_words(str, s, c);
+	return (str);
 }

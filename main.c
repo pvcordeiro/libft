@@ -6,7 +6,7 @@
 /*   By: paude-so <paude-so@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 16:03:21 by paude-so          #+#    #+#             */
-/*   Updated: 2024/11/04 13:17:36 by paude-so         ###   ########.fr       */
+/*   Updated: 2024/11/04 16:09:26 by paude-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -187,8 +187,8 @@ void	test_strrchr(void)
 void	test_strncmp(void)
 {
 	printf("\t\t----ft_strncmp----\n\n");
-	char	*s1 = "Hello";
-	char	*s2 = "Helto";
+	char	*s1 = "abcdefgh";
+	char	*s2 = "abcdwxyz";
 	size_t	n = 4;
 
 	printf("  String1: \"%s\" | String2: \"%s\"\n  Max i to compare: \"%zu\"\n  ft_strncmp: \"%d\"\n  strncmp: \"%d\"\n", s1, s2, n, ft_strncmp(s1, s2, n), strncmp(s1, s2, n));
