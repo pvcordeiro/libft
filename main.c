@@ -6,7 +6,7 @@
 /*   By: paude-so <paude-so@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 16:03:21 by paude-so          #+#    #+#             */
-/*   Updated: 2024/11/02 17:11:18 by paude-so         ###   ########.fr       */
+/*   Updated: 2024/11/04 10:48:34 by paude-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -522,7 +522,7 @@ int main(int argc, char *argv[])
 		i = 0;
         while (i < num_functions)
 		{
-            if (strcmp(argv[1], functions[i].name) == 0)
+            if (ft_strncmp(argv[1], functions[i].name, 10) == 0)
 			{
                 functions[i].func();
                 return (0);
