@@ -6,7 +6,7 @@
 /*   By: paude-so <paude-so@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 16:03:21 by paude-so          #+#    #+#             */
-/*   Updated: 2024/11/04 18:28:06 by paude-so         ###   ########.fr       */
+/*   Updated: 2024/11/04 18:49:26 by paude-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -412,7 +412,7 @@ void test_ft_lstadd_front(void)
     int value1 = 42;
     t_list *node1 = ft_lstnew(&value1);
     
-    int value2 = 24;
+    int value2 = 43;
     t_list *node2 = ft_lstnew(&value2);
     
     if (!node1 || !node2) {
@@ -438,7 +438,7 @@ void	test_ft_lstsize(void)
 	int value1 = 42;
 	t_list *node1 = ft_lstnew(&value1);
 	
-	int value2 = 24;
+	int value2 = 43;
 	t_list *node2 = ft_lstnew(&value2);
 	
 	if (!node1 || !node2)
@@ -454,6 +454,80 @@ void	test_ft_lstsize(void)
 
 	printf("  Content of head node: %d\n  Content of the next node: %d\n  Content of the next node: %s\n  Size of the list: %d\n", *(int *)node1->content, *(int *)node1->next->content, node1->next->next ? "Not NULL" : "NULL", ft_lstsize(node1));
 	
+	free(node1->next);
+	free(node1);
+}
+
+void	test_ft_lstlast(void)
+{
+	printf("\t\t----ft_lstlast----\n\n");
+	int value1 = 42;
+	t_list *node1 = ft_lstnew(&value1);
+	
+	int value2 = 43;
+	t_list *node2 = ft_lstnew(&value2);
+
+	int value3 = 44;
+	t_list *node3 = ft_lstnew(&value3);
+	
+	if (!node1 || !node2 || !node3)
+	{
+		if (node1)
+			free(node1);
+		if (node2)
+			free(node2);
+		if (node3)
+			free(node3);
+		return;
+	}
+	
+	node1->next = node2;
+	node2->next = node3;
+	
+	t_list *last = ft_lstlast(node1);
+	
+	printf("  Content of head node: %d\n  Content of the next node: %d\n  Content of the last node: %d\n", *(int *)node1->content, *(int *)node1->next->content, *(int *)last->content);
+	
+	free(node1->next);
+	free(node1);
+}
+
+void	test_ft_lstadd_back(void)
+{
+	printf("\t\t----ft_lstadd_back----\n\n");
+	int value1 = 42;
+	t_list *node1 = ft_lstnew(&value1);
+	
+	int value2 = 43;
+	t_list *node2 = ft_lstnew(&value2);
+	
+	int value3 = 44;
+	t_list *node3 = ft_lstnew(&value3);
+
+	int value4 = 45;
+	t_list *node4 = ft_lstnew(&value4);
+	
+	if (!node1 || !node2 || !node3 || !node4)
+	{
+		if (node1)
+			free(node1);
+		if (node2)
+			free(node2);
+		if (node3)
+			free(node3);
+		if (node4)
+			free(node4);
+		return;
+	}
+	
+	ft_lstadd_back(&node1, node2);
+	ft_lstadd_back(&node1, node3);
+	ft_lstadd_back(&node1, node4);
+	
+	printf("  Content of head node: %d\n  Content of the next node: %d\n  Content of the last node: %d\n", *(int *)node1->content, *(int *)node1->next->content, *(int *)node1->next->next->next->content);
+	
+	free(node1->next->next->next);
+	free(node1->next->next);
 	free(node1->next);
 	free(node1);
 }
@@ -539,6 +613,10 @@ void	run_all_tests(void)
 	printf("\n\n");
 	test_ft_lstsize();
 	printf("\n\n");
+	test_ft_lstlast();
+	printf("\n\n");
+	test_ft_lstadd_back();
+	printf("\n\n");
 }
 
 int main(int argc, char *argv[])
@@ -592,6 +670,8 @@ int main(int argc, char *argv[])
 			{"lstnew", test_ft_lstnew},
 			{"lstadd_front", test_ft_lstadd_front},
 			{"lstsize", test_ft_lstsize},
+			{"lstlast", test_ft_lstlast},
+			{"lstadd_back", test_ft_lstadd_back},
 		};
         num_functions = sizeof(functions) / sizeof(functions[0]);
 		i = 0;
