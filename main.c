@@ -6,7 +6,7 @@
 /*   By: paude-so <paude-so@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 16:03:21 by paude-so          #+#    #+#             */
-/*   Updated: 2024/11/04 12:16:01 by paude-so         ###   ########.fr       */
+/*   Updated: 2024/11/04 13:17:36 by paude-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -396,16 +396,18 @@ void	test_ft_putnbr_fd(void)
 void	test_ft_lstnew(void)
 {
 	printf("\t\t----ft_lstnew----\n\n");
-	int *value = ft_calloc(1, sizeof(int));
-	*value = 42;
-	t_list *node = ft_lstnew(value);
+	int value = 42;
+	t_list *node = ft_lstnew(&value);
 	
-	if (node)
-		printf("  Content of the new node: %d\n  Next pointer of the new node: %s\n", *(int *)node->content, node->next ? "Not NULL" : "NULL");
-	else
-		printf("  Failed to create new node.\n");
-	free(value);
+	if (!node)
+		return ;
+	printf("  Content of the new node: %d\n  Next pointer of the new node: %s\n", *(int *)node->content, node->next ? "Not NULL" : "NULL");
 	free(node);
+}
+
+void	test_ft_lstadd_front(void)
+{
+	
 }
 
 void	run_all_tests(void)
@@ -485,7 +487,8 @@ void	run_all_tests(void)
 	printf("\n\n");
 	test_ft_lstnew();
 	printf("\n\n");
-	
+	test_ft_lstadd_front();
+	printf("\n\n");
 }
 
 int main(int argc, char *argv[])
@@ -536,7 +539,8 @@ int main(int argc, char *argv[])
 			{"putstr_fd", test_ft_putstr_fd},
 			{"putendl_fd", test_ft_putendl_fd},
 			{"putnbr_fd", test_ft_putnbr_fd},
-			{"lstnew", test_ft_lstnew}
+			{"lstnew", test_ft_lstnew},
+			{"lstadd_front", test_ft_lstadd_front},
 		};
         num_functions = sizeof(functions) / sizeof(functions[0]);
 		i = 0;

@@ -6,7 +6,7 @@
 /*   By: paude-so <paude-so@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 11:30:34 by paude-so          #+#    #+#             */
-/*   Updated: 2024/10/31 14:18:43 by paude-so         ###   ########.fr       */
+/*   Updated: 2024/11/04 13:46:47 by paude-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		return (NULL);
 	size = ft_strlen(s);
 	if (start >= size)
-		return (ft_strdup(""));
+		return ((char *)ft_calloc(1, sizeof(char)));
 	if (len > size - start)
 		len = size - start;
 	sub = (char *)ft_calloc(len + 1, sizeof(char));
