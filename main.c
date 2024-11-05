@@ -6,7 +6,7 @@
 /*   By: paude-so <paude-so@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 16:03:21 by paude-so          #+#    #+#             */
-/*   Updated: 2024/11/05 14:23:40 by paude-so         ###   ########.fr       */
+/*   Updated: 2024/11/05 14:46:37 by paude-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,19 +66,24 @@ void	test_isprint(void)
 
 void	test_strlen(void)
 {
+	printf("\t\t----ft_strlen----\n\n");
 	char	str1[] = "Hello, World!";
 
-	printf("ft_strlen: \"%zu\" | strlen: \"%zu\"\n", ft_strlen(str1), strlen(str1));
+	printf("  Test string: \"%s\"\n\n  ft_strlen: \"%zu\"\n  strlen: \"%zu\"\n", str1, ft_strlen(str1), strlen(str1));
 }
 
 void	test_memset(void)
 {
+	printf("\t\t----ft_memset----\n\n");
 	char	ft_str[] = "abcdefghi";
 	char	str[] = "abcdefghi";
+	char	c = 'Z';
+	size_t	n = 4;
 
-	ft_memset(ft_str, 'Z', 4);
-	memset(str, 'Z', 4);
-	printf("ft_memset: \"%s\" | memset: \"%s\"\n", ft_str, str);
+	printf("  Before ft_memset: \"%s\"\n  Before memset: \"%s\"\n\n  Replacing %zu bytes with: \"%c\"\n\n", ft_str, str, n, c);
+	ft_memset(ft_str, c, n);
+	memset(str, c, n);
+	printf("  After ft_memset: \"%s\"\n  After memset: \"%s\"\n", ft_str, str);
 }
 
 void	test_bzero(void)
@@ -88,7 +93,7 @@ void	test_bzero(void)
 	char	str[] = "Hello, World!";
 	size_t	n = 2;
 
-	printf("  Before ft_bzero: \"%s\"\n  Before bzero: \"%s\"\n  Max bzeroing: \"%zu\"\n\n", ft_str, str, n);
+	printf("  Before ft_bzero: \"%s\"\n  Before bzero: \"%s\"\n\n  Zeroing %zu bytes\n\n", ft_str, str, n);
 	ft_bzero(ft_str, n);
 	bzero(str, n);
 	printf("  After ft_bzero: \"%s\"\n  After bzero: \"%s\"\n", ft_str + n, str + n);
