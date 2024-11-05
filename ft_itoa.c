@@ -6,7 +6,7 @@
 /*   By: paude-so <paude-so@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 12:00:54 by paude-so          #+#    #+#             */
-/*   Updated: 2024/11/04 20:25:55 by paude-so         ###   ########.fr       */
+/*   Updated: 2024/11/05 16:03:57 by paude-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ char	*ft_itoa(int n)
 
 	nb = n;
 	digits = ft_int_counter(nb);
-	str = (char *)ft_calloc(digits + 1, sizeof(char));
+	str = ft_calloc(digits + 1, sizeof(char));
 	if (!str)
 		return (NULL);
 	if (nb < 0)

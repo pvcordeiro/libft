@@ -6,7 +6,7 @@
 /*   By: paude-so <paude-so@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 11:19:10 by paude-so          #+#    #+#             */
-/*   Updated: 2024/10/31 13:42:08 by paude-so         ###   ########.fr       */
+/*   Updated: 2024/11/05 15:43:35 by paude-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 	while (end > start && ft_strchr(set, s1[end - 1]))
 		end--;
 	str_len = end - start;
-	str = (char *)ft_calloc(str_len + 1, sizeof(char));
+	str = ft_calloc(str_len + 1, sizeof(char));
 	if (!str)
 		return (NULL);
 	ft_memcpy(str, s1 + start, str_len);
