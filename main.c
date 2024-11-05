@@ -6,7 +6,7 @@
 /*   By: paude-so <paude-so@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 16:03:21 by paude-so          #+#    #+#             */
-/*   Updated: 2024/11/04 18:49:26 by paude-so         ###   ########.fr       */
+/*   Updated: 2024/11/05 13:43:10 by paude-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -497,39 +497,74 @@ void	test_ft_lstadd_back(void)
 	printf("\t\t----ft_lstadd_back----\n\n");
 	int value1 = 42;
 	t_list *node1 = ft_lstnew(&value1);
-	
 	int value2 = 43;
 	t_list *node2 = ft_lstnew(&value2);
-	
 	int value3 = 44;
 	t_list *node3 = ft_lstnew(&value3);
-
 	int value4 = 45;
 	t_list *node4 = ft_lstnew(&value4);
-	
-	if (!node1 || !node2 || !node3 || !node4)
-	{
-		if (node1)
-			free(node1);
-		if (node2)
-			free(node2);
-		if (node3)
-			free(node3);
-		if (node4)
-			free(node4);
-		return;
-	}
 	
 	ft_lstadd_back(&node1, node2);
 	ft_lstadd_back(&node1, node3);
 	ft_lstadd_back(&node1, node4);
 	
 	printf("  Content of head node: %d\n  Content of the next node: %d\n  Content of the last node: %d\n", *(int *)node1->content, *(int *)node1->next->content, *(int *)node1->next->next->next->content);
+
+}
+
+void	test_ft_lstdelone(void)
+{
+	printf("\t\t----ft_lstdelone----\n\n");
 	
-	free(node1->next->next->next);
-	free(node1->next->next);
-	free(node1->next);
-	free(node1);
+	t_list *head = ft_lstnew(ft_strdup("Hello"));
+	ft_lstadd_back(&head, ft_lstnew(ft_strdup("World")));
+	ft_lstadd_back(&head, ft_lstnew(ft_strdup("123!")));
+	
+	t_list	*current = head;
+	size_t	i = 1;
+	printf("  Before deleting second node:\n");
+	while (current)
+	{
+		printf("  Node %zu: %s\n", i++, (char *)current->content);
+		current = current->next;
+	}
+	
+	t_list	*delete_node = head->next;
+	t_list	*relink_node = delete_node->next;
+	ft_lstdelone(delete_node, free);
+	head->next = relink_node;
+	
+	current = head;	
+	i = 1;
+	printf("  After deleting second node:\n");
+	while (current)
+	{
+		printf("  Node %zu: %s\n", i++, (char *)current->content);
+		current = current->next;
+	}
+}
+
+void	test_ft_lstclear(void)
+{
+	printf("\t\t----ft_lstclear----\n\n");
+	
+	t_list *head = ft_lstnew(ft_strdup("Hello"));
+	ft_lstadd_back(&head, ft_lstnew(ft_strdup("World")));
+	ft_lstadd_back(&head, ft_lstnew(ft_strdup("123!")));
+	
+	size_t	i = 1;
+	printf("  Before clearing the list:\n");
+	while (head)
+	{
+		printf("  Node %zu: %s\n", i++, (char *)head->content);
+		head = head->next;
+	}
+	
+	ft_lstclear(&head, free);
+	
+	printf("  After clearing the list:\n");
+	if (!head)
+		printf("  The list is empty!\n");
 }
 
 void	run_all_tests(void)
@@ -607,6 +642,8 @@ void	run_all_tests(void)
 	printf("\n\n");
 	test_ft_putnbr_fd();
 	printf("\n\n");
+	printf("\t\t\t|\n\t\t\t|\n\t\t\t|\n\t    Bonus Linked Lists bellow\n\t\t\t|\n\t\t\t|\n\t\t\t|\n");
+	printf("\n\n");
 	test_ft_lstnew();
 	printf("\n\n");
 	test_ft_lstadd_front();
@@ -616,6 +653,10 @@ void	run_all_tests(void)
 	test_ft_lstlast();
 	printf("\n\n");
 	test_ft_lstadd_back();
+	printf("\n\n");
+	test_ft_lstdelone();
+	printf("\n\n");
+	test_ft_lstclear();
 	printf("\n\n");
 }
 
@@ -672,6 +713,8 @@ int main(int argc, char *argv[])
 			{"lstsize", test_ft_lstsize},
 			{"lstlast", test_ft_lstlast},
 			{"lstadd_back", test_ft_lstadd_back},
+			{"lstdelone", test_ft_lstdelone},
+			{"lstclear", test_ft_lstclear},
 		};
         num_functions = sizeof(functions) / sizeof(functions[0]);
 		i = 0;
