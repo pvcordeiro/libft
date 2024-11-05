@@ -6,7 +6,7 @@
 /*   By: paude-so <paude-so@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 16:03:21 by paude-so          #+#    #+#             */
-/*   Updated: 2024/11/05 13:43:10 by paude-so         ###   ########.fr       */
+/*   Updated: 2024/11/05 14:23:40 by paude-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -567,6 +567,88 @@ void	test_ft_lstclear(void)
 		printf("  The list is empty!\n");
 }
 
+void	ft_toupper_lstiter(void *content)
+{
+	if (content)
+	{
+		char *str = (char *)content;
+		while (*str)
+		{
+			*str = ft_toupper(*str);
+			str++;
+		}
+	}
+}
+
+void	test_ft_lstiter(void)
+{
+	printf("\t\t----ft_lstiter----\n\n");
+	
+	t_list *head = ft_lstnew(ft_strdup("Hello"));
+	ft_lstadd_back(&head, ft_lstnew(ft_strdup("World")));
+	ft_lstadd_back(&head, ft_lstnew(ft_strdup("123!")));
+	
+	t_list	*current = head;
+	size_t	i = 1;
+	printf("  Before iterating the list:\n");
+	while (current)
+	{
+		printf("  Node %zu: %s\n", i++, (char *)current->content);
+		current = current->next;
+	}
+	ft_lstiter(head, &ft_toupper_lstiter);
+	i = 1;
+	current = head;
+	printf("  After iterating the list:\n");
+	while (current)
+	{
+		printf("  Node %zu: %s\n", i++, (char *)current->content);
+		current = current->next;
+	}
+}
+
+void	*ft_toupper_lstmap(void *content)
+{
+	if (content)
+	{
+		char *str = (char *)content;
+		while (*str)
+		{
+			*str = ft_toupper(*str);
+			str++;
+		}
+	}
+	return ((void *)content);
+}
+
+void	test_ft_lstmap(void)
+{
+	printf("\t\t----ft_lstmap----\n\n");
+	
+	t_list *head = ft_lstnew(ft_strdup("Hello"));
+	ft_lstadd_back(&head, ft_lstnew(ft_strdup("World")));
+	ft_lstadd_back(&head, ft_lstnew(ft_strdup("123!")));
+	
+	
+	t_list	*current = head;
+	size_t	i = 1;
+	printf("  Before mapping the list:\n");
+	while (current)
+	{
+		printf("  Node %zu: %s\n", i++, (char *)current->content);
+		current = current->next;
+	}
+	t_list *new_head = ft_lstmap(head, &ft_toupper_lstmap, &free);
+	i = 1;
+	current = new_head;
+	printf("  After mapping the list:\n");
+	while (current)
+	{
+		printf("  Node %zu: %s\n", i++, (char *)current->content);
+		current = current->next;
+	}
+}
+
 void	run_all_tests(void)
 {
 	printf("\n\n\t\t\t  Tests bellow\n\n\n");
@@ -658,6 +740,10 @@ void	run_all_tests(void)
 	printf("\n\n");
 	test_ft_lstclear();
 	printf("\n\n");
+	test_ft_lstiter();
+	printf("\n\n");
+	test_ft_lstmap();
+	printf("\n\n");
 }
 
 int main(int argc, char *argv[])
@@ -715,6 +801,8 @@ int main(int argc, char *argv[])
 			{"lstadd_back", test_ft_lstadd_back},
 			{"lstdelone", test_ft_lstdelone},
 			{"lstclear", test_ft_lstclear},
+			{"lstiter", test_ft_lstiter},
+			{"lstmap", test_ft_lstmap}
 		};
         num_functions = sizeof(functions) / sizeof(functions[0]);
 		i = 0;
