@@ -6,7 +6,7 @@
 /*   By: paude-so <paude-so@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 13:13:02 by paude-so          #+#    #+#             */
-/*   Updated: 2024/11/05 13:49:44 by paude-so         ###   ########.fr       */
+/*   Updated: 2024/11/05 18:01:52 by paude-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
-	t_list	*tmp;
+	t_list	*current;
 
 	while (*lst)
 	{
-		tmp = (*lst)->next;
+		current = (*lst)->next;
 		ft_lstdelone(*lst, del);
-		*lst = tmp;
+		*lst = current;
 	}
 }
