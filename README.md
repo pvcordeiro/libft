@@ -88,7 +88,7 @@ These are my custom utilities that add even more functionality to Libft.
 
 ---
 
-## 🌟 Bonus Part (Under construction 🚧)
+## 🌟 Bonus Part
 
 The bonus part introduces linked lists, allowing for more advanced data management. Here’s what I added for the bonus:
 
