@@ -6,13 +6,13 @@
 /*   By: paude-so <paude-so@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 18:06:11 by paude-so          #+#    #+#             */
-/*   Updated: 2024/11/04 11:28:44 by paude-so         ###   ########.fr       */
+/*   Updated: 2024/11/06 01:23:18 by paude-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static size_t	ft_w_count(char const *s, char c)
+static size_t	ft_sub_count(const char *s, char c)
 {
 	size_t	count;
 
@@ -21,7 +21,7 @@ static size_t	ft_w_count(char const *s, char c)
 	{
 		while (*s == c)
 			s++;
-		if (*s != c && *s)
+		if (*s && *s != c)
 		{
 			count++;
 			while (*s && *s != c)
@@ -31,74 +31,40 @@ static size_t	ft_w_count(char const *s, char c)
 	return (count);
 }
 
-static void	ft_freearrs(char **arr)
+static char	**ft_rec_split(const char *s, char c, char **str)
 {
-	char	**start;
+	const char	*substr;
 
-	start = arr;
-	while (*arr)
-	{
-		free(*arr);
-		arr++;
-	}
-	free(start);
-}
-
-static void	ft_fill_words(char **str, const char *s, char c)
-{
-	const char	*start;
-
-	while (*s == c)
+	while (*s && *s == c)
 		s++;
-	while (*s)
-	{
-		start = s;
-		while (*s && *s != c)
-			s++;
-		*str = ft_substr(start, 0, s - start);
-		if (!*str)
-		{
-			ft_freearrs(str);
-			return ;
-		}
-		str++;
-		while (*s == c)
-			s++;
-	}
-}
-
-static char	**ft_base_cases(char **str, char const *s, char c)
-{
-	if (!s || !*s)
-		return ((char **)ft_calloc(1, sizeof(char *)));
-	if (!c)
-	{
-		str = (char **)ft_calloc(2, sizeof(char *));
-		if (str)
-		{
-			*str = ft_strdup(s);
-			if (!*str)
-			{
-				free(str);
-				return (NULL);
-			}
-		}
+	if (!*s)
 		return (str);
-	}
-	return (NULL);
+	substr = s;
+	while (*s && *s != c)
+		s++;
+	*str = ft_substr(substr, 0, s - substr);
+	if (!*str)
+		return (NULL);
+	return (ft_rec_split(s, c, str + 1));
 }
 
 char	**ft_split(char const *s, char c)
 {
 	char	**str;
+	char	**clean;
 
-	str = NULL;
-	str = ft_base_cases(str, s, c);
-	if (str)
-		return (str);
-	str = (char **)ft_calloc(ft_w_count(s, c) + 1, sizeof(char *));
+	if (!s)
+		return (NULL);
+	str = ft_calloc(ft_sub_count(s, c) + 1, sizeof(char *));
 	if (!str)
 		return (NULL);
-	ft_fill_words(str, s, c);
+	clean = str;
+	if (!ft_rec_split(s, c, str))
+	{
+		while (*clean)
+			free(*clean++);
+		free(str);
+		return (NULL);
+	}
 	return (str);
 }

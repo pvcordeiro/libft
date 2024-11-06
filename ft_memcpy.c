@@ -6,7 +6,7 @@
 /*   By: paude-so <paude-so@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 11:09:25 by paude-so          #+#    #+#             */
-/*   Updated: 2024/11/05 18:25:34 by paude-so         ###   ########.fr       */
+/*   Updated: 2024/11/05 19:42:19 by paude-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
-	char	*start;
+	unsigned char	*iter;
 
-	start = dest;
-	if (dest == NULL && src == NULL)
+	iter = (unsigned char *)dest;
+	if (!dest && !src)
 		return (NULL);
 	while (n--)
-		*(unsigned char *)dest++ = *(unsigned char *)src++;
-	return (start);
+		*iter++ = *(unsigned char *)src++;
+	return (dest);
 }

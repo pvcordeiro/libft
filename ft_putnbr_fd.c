@@ -6,7 +6,7 @@
 /*   By: paude-so <paude-so@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 20:36:11 by paude-so          #+#    #+#             */
-/*   Updated: 2024/10/30 13:44:23 by paude-so         ###   ########.fr       */
+/*   Updated: 2024/11/05 19:45:26 by paude-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,16 @@
 void	ft_putnbr_fd(int n, int fd)
 {
 	char	digit;
-	long	i;
+	long	nb;
 
-	i = n;
-	if (i < 0)
+	nb = n;
+	if (nb < 0)
 	{
-		i = -i;
+		nb = -nb;
 		write(fd, "-", 1);
 	}
-	if (i >= 10)
-		ft_putnbr_fd((i / 10), fd);
-	digit = i % 10 + 48;
+	if (nb >= 10)
+		ft_putnbr_fd((nb / 10), fd);
+	digit = nb % 10 + '0';
 	write(fd, &digit, 1);
 }

@@ -6,7 +6,7 @@
 /*   By: paude-so <paude-so@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 18:45:06 by paude-so          #+#    #+#             */
-/*   Updated: 2024/10/31 13:22:44 by paude-so         ###   ########.fr       */
+/*   Updated: 2024/11/05 19:45:48 by paude-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_putstr_fd(char *s, int fd)
 {
-	if (s == NULL)
+	if (!s)
 		return ;
 	while (*s)
 		write(fd, s++, 1);

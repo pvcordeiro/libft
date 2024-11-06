@@ -6,7 +6,7 @@
 /*   By: paude-so <paude-so@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 11:00:17 by paude-so          #+#    #+#             */
-/*   Updated: 2024/10/24 16:32:51 by paude-so         ###   ########.fr       */
+/*   Updated: 2024/11/05 19:48:28 by paude-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,10 @@
 
 void	*ft_memset(void *s, int c, size_t n)
 {
-	unsigned char	*cast;
-	unsigned char	chr;
-	size_t			i;
+	unsigned char	*iter;
 
-	cast = (unsigned char *)s;
-	chr = (unsigned char)c;
-	i = 0;
-	while (i < n)
-	{
-		cast[i] = chr;
-		i++;
-	}
+	iter = (unsigned char *)s;
+	while (n--)
+		*iter++ = c;
 	return (s);
 }

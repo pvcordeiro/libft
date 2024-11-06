@@ -6,7 +6,7 @@
 /*   By: paude-so <paude-so@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 12:00:54 by paude-so          #+#    #+#             */
-/*   Updated: 2024/11/05 18:08:05 by paude-so         ###   ########.fr       */
+/*   Updated: 2024/11/05 23:18:57 by paude-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,10 @@ static long	ft_digit_counter(long nb)
 
 static void	ft_create_str(long i, char *str, long n)
 {
-	while (i)
+	while (i--)
 	{
-		str[i - 1] = n % 10 + '0';
+		str[i] = n % 10 + '0';
 		n /= 10;
-		i--;
 	}
 }
 
@@ -51,8 +50,7 @@ char	*ft_itoa(int n)
 	if (nb < 0)
 	{
 		*str = '-';
-		nb = -nb;
-		ft_create_str(digits - 1, str + 1, nb);
+		ft_create_str(digits - 1, str + 1, -nb);
 	}
 	else
 		ft_create_str(digits, str, nb);

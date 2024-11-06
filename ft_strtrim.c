@@ -6,7 +6,7 @@
 /*   By: paude-so <paude-so@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 11:19:10 by paude-so          #+#    #+#             */
-/*   Updated: 2024/11/05 15:43:35 by paude-so         ###   ########.fr       */
+/*   Updated: 2024/11/06 01:01:41 by paude-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ char	*ft_strtrim(char const *s1, char const *set)
 	if (!s1 || !set)
 		return (NULL);
 	start = 0;
+	end = ft_strlen(s1);
 	while (s1[start] && ft_strchr(set, s1[start]))
 		start++;
-	end = ft_strlen(s1);
 	while (end > start && ft_strchr(set, s1[end - 1]))
 		end--;
 	str_len = end - start;

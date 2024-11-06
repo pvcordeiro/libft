@@ -6,7 +6,7 @@
 /*   By: paude-so <paude-so@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 15:36:32 by paude-so          #+#    #+#             */
-/*   Updated: 2024/10/31 17:46:01 by paude-so         ###   ########.fr       */
+/*   Updated: 2024/11/06 00:30:28 by paude-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,10 @@
 char	*ft_strdup(const char *s)
 {
 	char	*dup;
-	int		len;
 
-	len = ft_strlen(s);
-	dup = (char *)ft_calloc(len + 1, sizeof(char));
+	dup = ft_calloc(ft_strlen(s) + 1, sizeof(char));
 	if (!dup)
 		return (NULL);
-	ft_memcpy(dup, s, len);
+	ft_memcpy(dup, s, ft_strlen(s));
 	return (dup);
 }

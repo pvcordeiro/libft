@@ -6,7 +6,7 @@
 /*   By: paude-so <paude-so@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 19:58:12 by paude-so          #+#    #+#             */
-/*   Updated: 2024/10/30 13:44:07 by paude-so         ###   ########.fr       */
+/*   Updated: 2024/11/05 19:42:59 by paude-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_putendl_fd(char *s, int fd)
 {
-	if (s == NULL)
+	if (!s)
 		return ;
 	while (*s)
 		write(fd, s++, 1);

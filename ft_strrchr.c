@@ -6,7 +6,7 @@
 /*   By: paude-so <paude-so@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 12:32:43 by paude-so          #+#    #+#             */
-/*   Updated: 2024/11/05 16:45:13 by paude-so         ###   ########.fr       */
+/*   Updated: 2024/11/06 00:40:01 by paude-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ char	*ft_strrchr(const char *s, int c)
 	last = NULL;
 	while (*s)
 	{
-		if ((unsigned char)*s == (unsigned char)c)
+		if ((char)*s == (char)c)
 			last = (char *)s;
 		s++;
 	}
-	if (!(unsigned char)c)
+	if (!(char)c)
 		return ((char *)s);
 	return (last);
 }
