@@ -1,4 +1,4 @@
-# 🔥 Libft - Custom C Library for 42 Lisboa
+# 🛠️ Libft - Custom C Library for 42 Lisboa
 
 This is my implementation of Libft, the first project in the 42 curriculum where I developed my very own C library. Through this project, I recreated essential C functions and added custom utilities, building a toolkit that will support my future projects.
 
@@ -13,7 +13,7 @@ This is my implementation of Libft, the first project in the 42 curriculum where
 
 ---
 
-## 🛠️ About the Project
+## ℹ️ About the Project
 
 Libft is my custom library that includes functions for memory handling, string manipulation, and more. I created each function to follow the same behavior as standard library functions. Building this library helped me gain a deeper understanding of C fundamentals and memory management.
 
