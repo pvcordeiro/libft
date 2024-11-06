@@ -155,6 +155,7 @@ cc filename.c libft.a -o output_name
 ---
 
 My libft grade:
+
 ![Screenshot from 2024-11-06 19-44-43](https://github.com/user-attachments/assets/a3a32f61-3074-47cd-bee7-50966be7e843)
 
 This project is a great milestone in my journey through 42 School, and I’m excited to keep building on top of it!
