@@ -7,18 +7,15 @@ NAME = libft.a
 
 all: $(NAME)
 
-$(NAME): $(OBJS) compile
+$(NAME): $(OBJS)
 	@echo "\nCreating static library $(NAME)..."
 	@ar rcs $(NAME) $(OBJS)
 	@echo "\nDone!"
 
-bonus: $(OBJS) $(BONUS_OBJS)
-	@echo "\nCreating static library with bonus $(NAME)..."
-	@ar rcs $(NAME) $(OBJS) $(BONUS_OBJS)
+bonus: $(NAME) $(BONUS_OBJS)
+	@echo "\nAdding bonus objects to library $(NAME)..."
+	@ar rcs $(NAME) $(BONUS_OBJS)
 	@echo "\nDone!"
-
-compile: $(OBJS)
-	@echo "\nCompiling .c files into .o files...\n\nDone!"
 
 %.o: %.c
 	@$(CC) -I. -c $< -o $@
@@ -34,7 +31,7 @@ fclean: clean
 	@echo "\nDone!"
 
 re: fclean all
-#comment bellow before sending
+
 test: $(NAME) bonus
 	@echo "\nCompiling main with $(NAME) into test..."
 	@$(CC) main.c $(NAME) -lbsd -o test
