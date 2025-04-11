@@ -32,7 +32,17 @@ fclean: clean
 
 re: fclean all
 
-test: $(NAME) bonus
+test: fclean $(NAME)
+	@echo "\nCompiling main with $(NAME) into test..."
+	@$(CC) main.c $(NAME) -lbsd -o test -DNO_BONUS
+	@echo "\nDone!"
+	@echo "\nCleaning everything up..."
+	@rm -f $(OBJS) $(NAME)
+	@echo "\nDone!\n\n"
+	@echo "\nRead the instructions bellow:\n"
+	@./test
+
+test_bonus: fclean $(NAME) bonus
 	@echo "\nCompiling main with $(NAME) into test..."
 	@$(CC) main.c $(NAME) -lbsd -o test
 	@echo "\nDone!"

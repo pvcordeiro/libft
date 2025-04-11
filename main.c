@@ -6,7 +6,7 @@
 /*   By: paude-so <paude-so@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 16:03:21 by paude-so          #+#    #+#             */
-/*   Updated: 2024/11/05 14:46:37 by paude-so         ###   ########.fr       */
+/*   Updated: 2025/04/11 16:54:31 by paude-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -397,7 +397,7 @@ void	test_ft_putnbr_fd(void)
 	ft_putnbr_fd(n, 1);
 	printf("\"\n");
 }
-
+#ifndef NO_BONUS
 void	test_ft_lstnew(void)
 {
 	printf("\t\t----ft_lstnew----\n\n");
@@ -653,6 +653,7 @@ void	test_ft_lstmap(void)
 		current = current->next;
 	}
 }
+#endif
 
 void	run_all_tests(void)
 {
@@ -728,6 +729,7 @@ void	run_all_tests(void)
 	test_ft_putendl_fd();
 	printf("\n\n");
 	test_ft_putnbr_fd();
+	#ifndef NO_BONUS
 	printf("\n\n");
 	printf("\t\t\t|\n\t\t\t|\n\t\t\t|\n\t    Bonus Linked Lists bellow\n\t\t\t|\n\t\t\t|\n\t\t\t|\n");
 	printf("\n\n");
@@ -748,6 +750,7 @@ void	run_all_tests(void)
 	test_ft_lstiter();
 	printf("\n\n");
 	test_ft_lstmap();
+	#endif
 	printf("\n\n");
 }
 
@@ -799,6 +802,7 @@ int main(int argc, char *argv[])
 			{"putstr_fd", test_ft_putstr_fd},
 			{"putendl_fd", test_ft_putendl_fd},
 			{"putnbr_fd", test_ft_putnbr_fd},
+			#ifndef NO_BONUS
 			{"lstnew", test_ft_lstnew},
 			{"lstadd_front", test_ft_lstadd_front},
 			{"lstsize", test_ft_lstsize},
@@ -808,6 +812,7 @@ int main(int argc, char *argv[])
 			{"lstclear", test_ft_lstclear},
 			{"lstiter", test_ft_lstiter},
 			{"lstmap", test_ft_lstmap}
+			#endif
 		};
         num_functions = sizeof(functions) / sizeof(functions[0]);
 		i = 0;
